@@ -147,7 +147,9 @@
 <p>将工作文件修改到暂存区<code>git add &lt;file&gt;</code></p>
 <p>从版本库中删除文件<code>git rm &lt;file&gt;</code><br>从版本库中删除文件，但不删除文件<code>git rm &lt;file&gt; --cached</code></p>
 <p>提交你的修改<code>git commit -m &#39;??&#39;</code></p>
-<p>提交更新到远程服务器<code>git pull</code></p>
+<p>提交更新到远程服务器<code>git push</code></p>
+<p>从远程服务器，更新合并本地项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">	git fetch origin master  </div><div class="line">	git log -p master..origin/master  </div><div class="line">	git merge origin/master </div><div class="line">``` </div><div class="line"></div><div class="line">	可以简化为此-----&gt; </div><div class="line">	</div><div class="line">```language</div><div class="line">	git fetch origin master:tmp</div><div class="line">	git diff tmp </div><div class="line">	git merge tmp</div></pre></td></tr></table></figure></p>
+<p> 以上命令的含义：<br>   首先从远程的origin的master主分支下载最新的版本到origin/master分支上<br>   然后比较本地的master分支和origin/master分支的差别<br>   最后进行合并<br>   上述过程其实可以用以下更清晰的方式来进行：</p>
 
   </section>
 
