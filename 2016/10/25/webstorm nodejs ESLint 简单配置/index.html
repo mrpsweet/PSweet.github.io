@@ -1,170 +1,88 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
   
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
   <title>webstorm nodejs ESLint 简单配置 | PSweet</title>
+  <meta name="author" content="PSweet">
+  
+  <meta name="description" content="不模仿现实  &lt;br&gt;但构建真实">
+  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ESLint 简介 官网 http://eslint.org/在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。
-在以前的项目中，我们选择 JSHint 和 JSCS 结合使用，WebStorm 等开发环境已经支持这些工具，使用起来很顺手。然而，最近使用 React JSX 语法时，却遇到了问">
-<meta property="og:type" content="article">
-<meta property="og:title" content="webstorm nodejs ESLint 简单配置">
-<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/10/25/webstorm nodejs ESLint 简单配置/index.html">
-<meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="ESLint 简介 官网 http://eslint.org/在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。
-在以前的项目中，我们选择 JSHint 和 JSCS 结合使用，WebStorm 等开发环境已经支持这些工具，使用起来很顺手。然而，最近使用 React JSX 语法时，却遇到了问">
-<meta property="og:updated_time" content="2016-10-25T07:23:45.991Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webstorm nodejs ESLint 简单配置">
-<meta name="twitter:description" content="ESLint 简介 官网 http://eslint.org/在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。
-在以前的项目中，我们选择 JSHint 和 JSCS 结合使用，WebStorm 等开发环境已经支持这些工具，使用起来很顺手。然而，最近使用 React JSX 语法时，却遇到了问">
+
+  <meta property="og:title" content="webstorm nodejs ESLint 简单配置"/>
+  <meta property="og:site_name" content="PSweet"/>
+
   
-    <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
+    <meta property="og:image" content="undefined"/>
   
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="PSweet" type="application/atom+xml">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/main.css">
-  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-368771XX-X']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 </head>
 
 <body>
-  <div id="container">
-    <div class="left-col">
-      <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="null" class="js-avatar">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">PSweet</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">简单，美好，奋发</p>
-		
-
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔">随笔</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
-    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
-    			
-    			
-            
-    			
-    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
-    			
-    			
-            
-    			
-    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
-    			
-    			
-            
-    			
-    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
-    			
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="#" title="github">github</a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss">rss</a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
-		        
-			</div>
-		</nav>
-	</header>		
-</div>
-
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-list"></i></div>
-  		<h1 class="header-author js-mobile-header hide">PSweet</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				
-					<img src="null" class="js-avatar">
-				
-			</div>
-			<hgroup>
-			  <h1 class="header-author">PSweet</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">简单，美好，奋发</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/tags/随笔">随笔</a></li>
-		        
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="#" title="github">github</a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
+  <header id="header" class='normal_mode'>
+    <nav id="main-nav">
+  <ul class='container'>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
 </nav>
-
-      <div class="body-wrap">
-        <article id="post-webstorm nodejs ESLint 简单配置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+  </header>
+  <div id="content" class="container">
+    <article class="post">
   
-    <h1 class="article-title" itemprop="name">
-      webstorm nodejs ESLint 简单配置
-    </h1>
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2016-10-25T06:46:08.547Z"><a href="/2016/10/25/webstorm nodejs ESLint 简单配置/">Tue, Oct 25 2016, 2:46:08 pm</a></time>
+
+  
+    <h1 class="title">webstorm nodejs ESLint 简单配置</h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
       
         <h3 id="ESLint-简介-官网-http-eslint-org"><a href="#ESLint-简介-官网-http-eslint-org" class="headerlink" title="ESLint 简介 官网 http://eslint.org/"></a>ESLint 简介 官网 <a href="http://eslint.org/" target="_blank" rel="external">http://eslint.org/</a></h3><p>在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。</p>
 <p>在以前的项目中，我们选择 JSHint 和 JSCS 结合使用，WebStorm 等开发环境已经支持这些工具，使用起来很顺手。然而，最近使用 React JSX 语法时，却遇到了问题：JSHint 不支持 JSX 语法。虽然有 JSXHint 这样的 JSHint 衍生工具，但个人并不喜欢这样的实现方式：不是以插件的形式实现，而是重新重新包装了一个工具。Nicholas C. Zakas 也不喜欢，所以有了 ESLint。</p>
@@ -203,229 +121,136 @@
 
       
     </div>
-    <div class="article-info article-info-index">
+    <footer>
       
-      <a href="/2016/10/25/webstorm nodejs ESLint 简单配置/" class="archive-article-date">
-  	<time datetime="2016-10-25T06:46:08.547Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-25</time>
-</a>
-      
-      
+          
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <span class="jiathis_txt">分享到：</span>
+  <a class="jiathis_button_weixin">微信</a>
+  <a class="jiathis_button_tsina">新浪微博</a>
+  <a class="jiathis_button_renren">人人网</a>
+  <a class="jiathis_button_qzone">QQ空间</a>
+  <a class="jiathis_button_douban">豆瓣</a>
+  <a class="jiathis_button_pocket">Pocket</a>
+  <a href="http://www.jiathis.com/share?uid=901656" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=901656" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
+          <div class="clearfix"></div>
+          <nav id="pagination">
+  
+    <a href="/2016/10/31/何所谓favicon.ico/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
+  
+  
+    <a href="/2016/10/12/Web配色基础/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
+  
+  <div class="clearfix"></div>
+</nav>
+      
       <div class="clearfix"></div>
-    </div>
+    </footer>
   </div>
 </article>
 
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
   
-<nav id="article-nav">
+      <!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-thread-key="/2016/10/25/webstorm nodejs ESLint 简单配置/"></div>
+<!-- Duoshuo Comment END -->
   
-    <a href="/2016/10/31/何所谓favicon.ico/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          何所谓favicon.ico
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/10/12/Web配色基础/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Web配色基础</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
+</section>
 
 
 
-
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-	    <a class="jiathis_button_twitter"></a>
-	    <a class="jiathis_button_plus"></a> 
-	    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-
-
-
-
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 PSweet
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
+    <div class="clearfix"></div>
   </div>
-</footer>
-    </div>
-    <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: false,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: true
-	}
+  <footer id="footer" class="inner"><div>
+  
+  &copy; 2016 PSweet
+  
+</div>
+Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
+
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        (function(){
+
+            $(window).scroll(function(){
+
+                var scrollTop = $(window).scrollTop();
+                if ( scrollTop >200 ){
+                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
+                } else{
+                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
+                }
+
+            });
+
+        })();
+    </script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox({
+      'titlePosition': 'inside'
+    });
+  })(jQuery);
+  </script>
+
+
+
+    
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"your_id"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = 'http://static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+<script type="text/javascript">
+  
+  $(function(){
+
+    $('.title').hover(
+      function() {      
+        $(this).stop().animate(
+          {'marginLeft': '10px'}, 200
+        );   
+      }, 
+      function() {       
+        $(this).stop().animate({'marginLeft': '0px'}, 200);      
+      
+    });   
+
+  });
+
 </script>
 
-<script src="/./main.js"></script>
 
-
-    
-<div class="tools-col">
-  <ul class="btn-wrap">
-    
-      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
-    
-    
-      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
-    
-    
-      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
-    
-    
-      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
-    
-  </ul>
-  <div class="tools-wrap">
-    
-    	<section class="tools-section tools-section-all chose">
-    	</section>
-    
-
-    
-    	<section class="tools-section tools-section-tag">
-    			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/前端Web/" style="font-size: 10px;">前端Web</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
-    			</div>
-    	</section>
-    
-
-    
-    	<section class="tools-section tools-section-friends">
-  		
-  			<div class="friends-wrap" id="js-friends">
-  			
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接1</a>
-  	        
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接2</a>
-  	        
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接3</a>
-  	        
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接4</a>
-  	        
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接5</a>
-  	        
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接6</a>
-  	        
-  	        </div>
-  		
-    	</section>
-    
-
-    
-    	<section class="tools-section tools-section-me">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
-  	  	
-    	</section>
-    
-  </div>
-  
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-  </div>
 </body>
 </html>
