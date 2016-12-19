@@ -8,16 +8,25 @@
   <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
   <title>PSweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="林花谢了春红，太匆匆。无奈朝来寒雨晚来风。胭脂泪，留人醉，几时重。自是人生长恨水长东。这是南唐李煜的一句名句。意思是说，人生太漫长了， 跟流水一样长，几乎让人熬不下去了。孔子说逝者如斯夫， 不舍昼夜。人的一生都与他的际遇有关， 当有一天，他实在忍受不了这个世界的时候，就会选择一种逃避的办法。多少年前，南唐第三代国君李煜因感怀与心爱的人无法长相厮守，在暮春的午后留下了这传诵千古的词句。一边是生逢末世">
+  <meta name="description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。
+从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
+
+所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PSweet">
-<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/08/随笔/index.html">
+<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/15/大道至简：Angular2只有一个核心概念/index.html">
 <meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="林花谢了春红，太匆匆。无奈朝来寒雨晚来风。胭脂泪，留人醉，几时重。自是人生长恨水长东。这是南唐李煜的一句名句。意思是说，人生太漫长了， 跟流水一样长，几乎让人熬不下去了。孔子说逝者如斯夫， 不舍昼夜。人的一生都与他的际遇有关， 当有一天，他实在忍受不了这个世界的时候，就会选择一种逃避的办法。多少年前，南唐第三代国君李煜因感怀与心爱的人无法长相厮守，在暮春的午后留下了这传诵千古的词句。一边是生逢末世">
-<meta property="og:updated_time" content="2016-12-08T03:00:54.772Z">
+<meta property="og:description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。
+从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
+
+所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
+<meta property="og:updated_time" content="2016-12-15T02:02:43.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PSweet">
-<meta name="twitter:description" content="林花谢了春红，太匆匆。无奈朝来寒雨晚来风。胭脂泪，留人醉，几时重。自是人生长恨水长东。这是南唐李煜的一句名句。意思是说，人生太漫长了， 跟流水一样长，几乎让人熬不下去了。孔子说逝者如斯夫， 不舍昼夜。人的一生都与他的际遇有关， 当有一天，他实在忍受不了这个世界的时候，就会选择一种逃避的办法。多少年前，南唐第三代国君李煜因感怀与心爱的人无法长相厮守，在暮春的午后留下了这传诵千古的词句。一边是生逢末世">
+<meta name="twitter:description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。
+从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
+
+所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
   
     <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
   
@@ -133,7 +142,7 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-随笔" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-大道至简：Angular2只有一个核心概念" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -141,14 +150,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>林花谢了春红，太匆匆。无奈朝来寒雨晚来风。<br>胭脂泪，留人醉，几时重。自是人生长恨水长东。<br>这是南唐李煜的一句名句。意思是说，人生太漫长了， 跟流水一样长，几乎让人熬不下去了。孔子说逝者如斯夫， 不舍昼夜。人的一生都与他的际遇有关， 当有一天，他实在忍受不了这个世界的时候，就会选择一种逃避的办法。多少年前，南唐第三代国君李煜因感怀与心爱的人无法长相厮守，在暮春的午后留下了这传诵千古的词句。一边是生逢末世，运交华盖的失意人，一边是盛时不再、红消香断的解语花，二者恍然相对，不胜缱绻。言语间透着淡淡的感伤和无奈。生命短暂，不正如同林花一般，匆匆开了又谢了，尔后飘零一地？<br>其实常人又何尝不是呢。虽然我们没有贵为九五之尊那样的地位， 但是人的本性和人的责任是一样的在现实面前， 有许多东西令得我们无法逃避， 令得我们明明知道那是一个遥不可及的目标， 明明知道那是一个悲剧性的搏斗过程，但我们为了责任，必须义无反顾地去奋斗…… 容不得我们去喘息所以有时候人真的是很累，不知道人的一生究竟活着是为了什么。但是又不能去抛弃了这个责任去逃避那样会很自私……<br>生命，原本就是如此的脆弱，不小心轻轻一碰就可能化做一地碎片。岁月的长河滚滚向前，世人却挽不住似水的流年，一如挽不住林花的灿烂。林花开了又谢，太匆匆。毕竟开过，灿烂过，虽然匆匆，却已足够。生命何尝不是如此？在步入暮年的时候，不要再概叹“夕阳无限好，只是近黄昏”，因为我们曾经努力过，哪怕如林花般匆匆。花开花谢，只愿留下一路芬芳，润泽大地。</p>
+        <p> 整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。</p>
+<pre><code>从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
 
+所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。
+
+接下来罗列一下Angular2与之前的1.x相比带来的核心改变。
+
+第一点：Angular2删掉了$scope的概念。
+
+在ng1.x里面，$scope是一个相当强大又相当可怕的东西，一言不合就让开发者自己$apply。ng2响应社区的强烈吐槽，删除（或者说隐藏）了$scope这个东西，开发者不再需要感知到它的存在，另外，由于ng2引入了zone.js，所以即使在各种回调函数中修改数据模型也不需要手动$apply()了。
+
+这一点说明了群众们吐槽的力量还是相当强大的！
+
+第二点：删掉了ng-controller指令。
+
+Controller终于和Component合体了，小僧想说的是，人家Backbone早就这么做了，你们一开始只顾着自己挖坑，也不看看友军的战法，还好浪子回头为时不晚。
+
+第三点：大幅度演进了脏值检测机制。
+
+大家都知道，”双向数据绑定“之所以能工作，都是因为底层有”脏值检测“这么一个神奇的东西。而实际上ng1.x里面的脏值检测机制的运行效率是非常差的，这就是为什么大家一直在吐槽绑定的对象不能太多、太深的原因。
+
+那么，在ng2中，大幅度演进了这一机制，不仅引入了单向绑定，还引入了各种绑定策略，例如：只检测一次、利用JIT动态生成脏值检测代码等等。毫无疑问，有了这些工具之后，数据绑定效率不再是问题。
+
+第四点：嵌套路由问题。
+
+大家都知道，在ng1.x里面有一个非常讨厌的问题，官方的路由机制是不能嵌套的，这就导致大家在开发的过程中不得不依赖于第三方的ui-router库。ng2中没有这个问题了，因为ng2的路由是基于Component的，天然就支持嵌套。
+
+第五点：依赖注入机制改造。
+
+ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开发团队里面混入了Java大神。如果你熟悉Spring那一套注解的用法，那么写ng2的组件几乎没有学习成本。
+
+第六点：框架整体上基于TypeScript开发。
+
+这是最大的一个变更，但是大家不用害怕，因为你只要记住我一句话就再也没有顾虑了：TypeScript和ActionScript3一样，不过是变态版的Java而已。
+</code></pre>
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/12/08/随笔/" class="archive-article-date">
-  	<time datetime="2016-12-08T03:00:25.955Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-08</time>
+      <a href="/2016/12/15/大道至简：Angular2只有一个核心概念/" class="archive-article-date">
+  	<time datetime="2016-12-15T02:01:38.540Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-15</time>
 </a>
       
       
@@ -161,17 +203,8 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/12/15/大道至简：Angular2只有一个核心概念/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/11/30/angularjs的$on、$emit、$broadcast/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/12/08/随笔/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
@@ -206,7 +239,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="随笔" data-title="" data-url="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/08/随笔/"></div>
+	<div class="ds-thread" data-thread-key="大道至简：Angular2只有一个核心概念" data-title="" data-url="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/15/大道至简：Angular2只有一个核心概念/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
