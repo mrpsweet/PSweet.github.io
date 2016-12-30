@@ -8,25 +8,22 @@
   <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
   <title>PSweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。
-从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
-
-所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
+  <meta name="description" content="函数的继承这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。今天是最后一个部分，介绍不使用构造函数实现”继承”。
+一、什么是”非构造函数”的继承？比如，现在有一个对象，叫做”中国人”。123var Chinese = &amp;#123;　　　　nation:&amp;apos;中国&amp;apos;　　&amp;#125;;
+还有一个对象，叫做”医生”。123var Doctor =&amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PSweet">
-<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/15/大道至简：Angular2只有一个核心概念/index.html">
+<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/27/函数的继承/index.html">
 <meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。
-从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
-
-所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
-<meta property="og:updated_time" content="2016-12-15T02:02:43.837Z">
+<meta property="og:description" content="函数的继承这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。今天是最后一个部分，介绍不使用构造函数实现”继承”。
+一、什么是”非构造函数”的继承？比如，现在有一个对象，叫做”中国人”。123var Chinese = &amp;#123;　　　　nation:&amp;apos;中国&amp;apos;　　&amp;#125;;
+还有一个对象，叫做”医生”。123var Doctor =&amp;#123;">
+<meta property="og:updated_time" content="2016-12-27T09:07:25.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PSweet">
-<meta name="twitter:description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。
-从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
-
-所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
+<meta name="twitter:description" content="函数的继承这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。今天是最后一个部分，介绍不使用构造函数实现”继承”。
+一、什么是”非构造函数”的继承？比如，现在有一个对象，叫做”中国人”。123var Chinese = &amp;#123;　　　　nation:&amp;apos;中国&amp;apos;　　&amp;#125;;
+还有一个对象，叫做”医生”。123var Doctor =&amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
   
@@ -142,7 +139,7 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-大道至简：Angular2只有一个核心概念" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-函数的继承" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -150,47 +147,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。</p>
-<pre><code>从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
+        <h3 id="函数的继承"><a href="#函数的继承" class="headerlink" title="函数的继承"></a>函数的继承</h3><p>这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。<br>今天是最后一个部分，介绍不使用构造函数实现”继承”。</p>
+<h4 id="一、什么是”非构造函数”的继承？"><a href="#一、什么是”非构造函数”的继承？" class="headerlink" title="一、什么是”非构造函数”的继承？"></a>一、什么是”非构造函数”的继承？</h4><p>比如，现在有一个对象，叫做”中国人”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Chinese = &#123;</div><div class="line">　　　　nation:&apos;中国&apos;</div><div class="line">　　&#125;;</div></pre></td></tr></table></figure></p>
+<p>还有一个对象，叫做”医生”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Doctor =&#123;</div><div class="line">　　　　career:&apos;医生&apos;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
+<p>请问怎样才能让”医生”去继承”中国人”，也就是说，我怎样才能生成一个”中国医生”的对象？<br>这里要注意，这两个对象都是普通对象，不是构造函数，无法使用构造函数方法实现”继承”。</p>
+<h4 id="二、object-方法"><a href="#二、object-方法" class="headerlink" title="二、object()方法"></a>二、object()方法</h4><p>json格式的发明人Douglas Crockford，提出了一个object()函数，可以做到这一点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function object(o)&#123;</div><div class="line">	function F()&#123;&#125;</div><div class="line">	F.prototype=o;</div><div class="line">	return new F();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个object()函数，其实只做一件事，就是把子对象的prototype属性，指向父对象，从而使得子对象与父对象连在一起。<br>使用的时候，第一步先在父对象的基础上，生成子对象：<br><code>var Doctor=object(Chinese);</code><br>然后，再加上子对象本身的属性：<br><code>Doctor.career = &#39;医生&#39;;</code><br>这时，子对象已经继承了父对象的属性了。<br><code>alert(Doctor.nation); //中国</code></p>
+<h4 id="三、浅拷贝"><a href="#三、浅拷贝" class="headerlink" title="三、浅拷贝"></a>三、浅拷贝</h4><p>除了使用”prototype链”以外，还有另一种思路：把父对象的属性，全部拷贝给子对象，也能实现继承。<br>下面这个函数，就是在做拷贝：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function extendCopy(p)&#123;</div><div class="line">	var c=&#123;&#125;;</div><div class="line">	for(var i in p)&#123;</div><div class="line">		c[i]=p[i];</div><div class="line">	&#125;</div><div class="line">	c.uber=p;</div><div class="line">	return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用的时候，这样写:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Doctor = extendCopy(Chinese);</div><div class="line">Doctor.career = &apos;医生&apos;;</div><div class="line">alert(Doctor.nation); // 中国</div></pre></td></tr></table></figure></p>
+<p>但是，这样的拷贝有一个问题。那就是，如果父对象的属性等于数组或另一个对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被篡改的可能。<br>请看，现在给Chinese添加一个”出生地”属性，它的值是一个数组。<br><code>Chinese.birthPlaces = [&#39;北京&#39;,&#39;上海&#39;,&#39;香港&#39;];</code><br>通过extendCopy()函数，Doctor继承了Chinese。<br><code>var Doctor=extendCopy(Chinese);</code><br>然后，我们为Doctor的”出生地”添加一个城市：<br><code>Doctor.birthPlaces.push(&#39;厦门&#39;);</code><br>发生了什么事？Chinese的”出生地”也被改掉了！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(Doctor.birthPlaces); //北京, 上海, 香港, 厦门</div><div class="line">alert(Chinese.birthPlaces); //北京, 上海, 香港, 厦门</div></pre></td></tr></table></figure></p>
+<p>所以，extendCopy()只是拷贝基本类型的数据，我们把这种拷贝叫做”浅拷贝”。这是早期jQuery实现继承的方式。</p>
+<h4 id="四、深拷贝"><a href="#四、深拷贝" class="headerlink" title="四、深拷贝"></a>四、深拷贝</h4><p>所谓”深拷贝”，就是能够实现真正意义上的数组和对象的拷贝。它的实现并不难，只要递归调用”浅拷贝”就行了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function deepCopy(p,c)&#123;</div><div class="line">	var c=c||&#123;&#125;;</div><div class="line">	for(var i in p)&#123;</div><div class="line">		if(typeof p[i]===&apos;object&apos;)&#123;</div><div class="line">			c[i]=(p[i].constructor===Array)?[]:&#123;&#125;;</div><div class="line">			deepCopy(p[i],c[i]);</div><div class="line">		&#125;else&#123;</div><div class="line">			c[i]=p[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用的时候这样写：<br><code>var Doctor = deepCopy(Chinese);</code><br>现在，给父对象加一个属性，值为数组。然后，在子对象上修改这个属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Chinese.birthPlaces = [&apos;北京&apos;,&apos;上海&apos;,&apos;香港&apos;];</div><div class="line">Doctor.birthPlaces.push(&apos;厦门&apos;);</div></pre></td></tr></table></figure></p>
+<p>这时，父对象就不会受到影响了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(Doctor.birthPlaces); //北京, 上海, 香港, 厦门</div><div class="line">alert(Chinese.birthPlaces); //北京, 上海, 香港</div></pre></td></tr></table></figure></p>
 
-所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。
-
-接下来罗列一下Angular2与之前的1.x相比带来的核心改变。
-
-第一点：Angular2删掉了$scope的概念。
-
-在ng1.x里面，$scope是一个相当强大又相当可怕的东西，一言不合就让开发者自己$apply。ng2响应社区的强烈吐槽，删除（或者说隐藏）了$scope这个东西，开发者不再需要感知到它的存在，另外，由于ng2引入了zone.js，所以即使在各种回调函数中修改数据模型也不需要手动$apply()了。
-
-这一点说明了群众们吐槽的力量还是相当强大的！
-
-第二点：删掉了ng-controller指令。
-
-Controller终于和Component合体了，小僧想说的是，人家Backbone早就这么做了，你们一开始只顾着自己挖坑，也不看看友军的战法，还好浪子回头为时不晚。
-
-第三点：大幅度演进了脏值检测机制。
-
-大家都知道，”双向数据绑定“之所以能工作，都是因为底层有”脏值检测“这么一个神奇的东西。而实际上ng1.x里面的脏值检测机制的运行效率是非常差的，这就是为什么大家一直在吐槽绑定的对象不能太多、太深的原因。
-
-那么，在ng2中，大幅度演进了这一机制，不仅引入了单向绑定，还引入了各种绑定策略，例如：只检测一次、利用JIT动态生成脏值检测代码等等。毫无疑问，有了这些工具之后，数据绑定效率不再是问题。
-
-第四点：嵌套路由问题。
-
-大家都知道，在ng1.x里面有一个非常讨厌的问题，官方的路由机制是不能嵌套的，这就导致大家在开发的过程中不得不依赖于第三方的ui-router库。ng2中没有这个问题了，因为ng2的路由是基于Component的，天然就支持嵌套。
-
-第五点：依赖注入机制改造。
-
-ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开发团队里面混入了Java大神。如果你熟悉Spring那一套注解的用法，那么写ng2的组件几乎没有学习成本。
-
-第六点：框架整体上基于TypeScript开发。
-
-这是最大的一个变更，但是大家不用害怕，因为你只要记住我一句话就再也没有顾虑了：TypeScript和ActionScript3一样，不过是变态版的Java而已。
-</code></pre>
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/12/15/大道至简：Angular2只有一个核心概念/" class="archive-article-date">
-  	<time datetime="2016-12-15T02:01:38.540Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-15</time>
+      <a href="/2016/12/27/函数的继承/" class="archive-article-date">
+  	<time datetime="2016-12-27T08:45:30.200Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-27</time>
 </a>
       
       
@@ -203,7 +179,7 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
   
 <nav id="article-nav">
   
-    <a href="/2016/12/27/封装/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/28/学习Javascript闭包/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -213,7 +189,7 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
     </a>
   
   
-    <a href="/2016/12/08/随笔/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/12/27/构造函数的继承/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
@@ -248,7 +224,7 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="大道至简：Angular2只有一个核心概念" data-title="" data-url="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/15/大道至简：Angular2只有一个核心概念/"></div>
+	<div class="ds-thread" data-thread-key="函数的继承" data-title="" data-url="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/27/函数的继承/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
