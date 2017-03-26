@@ -146,19 +146,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="page-学习Javascript闭包" class="article article-type-page  article-index" itemscope itemprop="blogPost">
+    <article id="page-javascript/学习Javascript闭包" class="article article-type-page  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/学习Javascript闭包/">学习Javascript闭包（Closure）</a>
+      <a class="article-title" href="/2017/02/22/javascript/学习Javascript闭包/">学习Javascript闭包（Closure）</a>
     </h1>
   
 
         
-        <a href="/2017/02/22/学习Javascript闭包/" class="archive-article-date">
+        <a href="/2017/02/22/javascript/学习Javascript闭包/" class="archive-article-date">
   	<time datetime="2017-02-22T07:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
 </a>
         
@@ -167,19 +167,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。<br>下面就是我的学习笔记，对于Javascript初学者应该是很有用的。</p>
-<h5 id="一、变量的作用域"><a href="#一、变量的作用域" class="headerlink" title="一、变量的作用域"></a>一、变量的作用域</h5><p>要理解闭包，首先必须理解Javascript特殊的变量作用域。<br>变量的作用域无非就是两种：全局变量和局部变量。<br>Javascript语言的特殊之处，就在于函数内部可以直接读取全局变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var n=999;</div><div class="line">function f1()&#123;</div><div class="line">	alert(n);</div><div class="line">&#125;</div><div class="line">f1();//999</div></pre></td></tr></table></figure></p>
-<p>另一方面，在函数外部自然无法读取函数内的局部变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">	var n=999;</div><div class="line">&#125;</div><div class="line">alert(n);//error</div></pre></td></tr></table></figure></p>
-<p>这里有一个地方需要注意，函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">	n=999;</div><div class="line">&#125;</div><div class="line">f1();</div><div class="line">alert(n);//999</div></pre></td></tr></table></figure></p>
-<h5 id="二、如何从外部读取局部变量？"><a href="#二、如何从外部读取局部变量？" class="headerlink" title="二、如何从外部读取局部变量？"></a>二、如何从外部读取局部变量？</h5><p>出于种种原因，我们有时候需要得到函数内的局部变量。但是，前面已经说过了，正常情况下，这是办不到的，只有通过变通方法才能实现。<br>那就是在函数的内部，再定义一个函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">	var n=999;</div><div class="line">	function f2()&#123;</div><div class="line">		alert(n);//999</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在上面的代码中，函数f2就被包括在函数f1内部，这时f1内部的所有局部变量，对f2都是可见的。但是反过来就不行，f2内部的局部变量，对f1就是不可见的。这就是Javascript语言特有的”链式作用域”结构（chain scope），子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。<br>既然f2可以读取f1中的局部变量，那么只要把f2作为返回值，我们不就可以在f1外部读取它的内部变量了吗！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">	var n=999;</div><div class="line">	function f2()&#123;</div><div class="line">		alert(n);</div><div class="line">	&#125;</div><div class="line">	return f2;</div><div class="line">&#125;</div><div class="line">var reult=f1();</div><div class="line">result();//999</div></pre></td></tr></table></figure></p>
-<h5 id="三、闭包的概念"><a href="#三、闭包的概念" class="headerlink" title="三、闭包的概念"></a>三、闭包的概念</h5><p>上一节代码中的f2函数，就是闭包。<br>各种专业文献上的”闭包”（closure）定义非常抽象，很难看懂。我的理解是，闭包就是能够读取其他函数内部变量的函数。<br>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。<br>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</p>
-<h5 id="四、闭包的用途"><a href="#四、闭包的用途" class="headerlink" title="四、闭包的用途"></a>四、闭包的用途</h5><p>闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。<br>怎么来理解这句话呢？请看下面的代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">	var n=999;</div><div class="line">	nAdd=function()&#123;n+=1&#125;</div><div class="line">	function f2()&#123;</div><div class="line">		alert(n);</div><div class="line">	&#125;</div><div class="line">	return f2;</div><div class="line">&#125;</div><div class="line">var result=f1();</div><div class="line">result();//999</div><div class="line">nAdd();</div><div class="line">result();//1000</div></pre></td></tr></table></figure></p>
-<p>在这段代码中，result实际上就是闭包f2函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在f1调用后被自动清除。<br>为什么会这样呢？原因就在于f1是f2的父函数，而f2被赋给了一个全局变量，这导致f2始终在内存中，而f2的存在依赖于f1，因此f1也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。<br>这段代码中另一个值得注意的地方，就是”nAdd=function(){n+=1}”这一行，首先在nAdd前面没有使用var关键字，因此nAdd是一个全局变量，而不是局部变量。其次，nAdd的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以nAdd相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。</p>
-<h5 id="五、使用闭包的注意点"><a href="#五、使用闭包的注意点" class="headerlink" title="五、使用闭包的注意点"></a>五、使用闭包的注意点</h5><ul>
-<li>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。</li>
-<li>闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/02/22/javascript/学习Javascript闭包/#more">more >></a>
+        
       
 
       
@@ -187,11 +177,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/22/学习Javascript闭包/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/22/javascript/学习Javascript闭包/">展开全文 >></a>
         </p>
       
 
@@ -209,19 +210,19 @@
 
 
   
-    <article id="post-Javascript的正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-javascript/Javascript的正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/Javascript的正则表达式/">正则表达式</a>
+      <a class="article-title" href="/2017/02/22/javascript/Javascript的正则表达式/">javascript正则表达式</a>
     </h1>
   
 
         
-        <a href="/2017/02/22/Javascript的正则表达式/" class="archive-article-date">
+        <a href="/2017/02/22/javascript/Javascript的正则表达式/" class="archive-article-date">
   	<time datetime="2017-02-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
 </a>
         
@@ -234,7 +235,7 @@
 <p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=29932475&auto=0&height=66"></iframe></p>
 <hr>
         
-          <a class="article-more-a" href="/2017/02/22/Javascript的正则表达式/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/22/javascript/Javascript的正则表达式/#more">more >></a>
         
       
 
@@ -248,7 +249,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
@@ -258,7 +259,71 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/22/Javascript的正则表达式/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/22/javascript/Javascript的正则表达式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/21/封装/">封装</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/21/封装/" class="archive-article-date">
+  	<time datetime="2017-02-21T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Javascript-面向对象编程（一）：封装"><a href="#Javascript-面向对象编程（一）：封装" class="headerlink" title="Javascript 面向对象编程（一）：封装"></a>Javascript 面向对象编程（一）：封装</h3><p>Javascript是一种基于对象（object-based）的语言，你遇到的所有东西几乎都是对象。但是，它又不是一种真正的面向对象编程（OOP）语言，因为它的语法中没有class（类）。<br>那么，如果我们要把”属性”（property）和”方法”（method），封装成一个对象，甚至要从原型对象生成一个实例对象，我们应该怎么做呢？</p>
+        
+          <a class="article-more-a" href="/2017/02/21/封装/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/21/封装/">展开全文 >></a>
         </p>
       
 
@@ -359,63 +424,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/12/27/构造函数的继承/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Javascript-面向对象编程（一）：封装"><a href="#Javascript-面向对象编程（一）：封装" class="headerlink" title="Javascript 面向对象编程（一）：封装"></a>Javascript 面向对象编程（一）：封装</h3><p>Javascript是一种基于对象（object-based）的语言，你遇到的所有东西几乎都是对象。但是，它又不是一种真正的面向对象编程（OOP）语言，因为它的语法中没有class（类）。<br>那么，如果我们要把”属性”（property）和”方法”（method），封装成一个对象，甚至要从原型对象生成一个实例对象，我们应该怎么做呢？</p>
-<h4 id="一、-生成实例对象的原始模式"><a href="#一、-生成实例对象的原始模式" class="headerlink" title="一、 生成实例对象的原始模式"></a>一、 生成实例对象的原始模式</h4><p>假定我们把猫看成一个对象，它有”名字”和”颜色”两个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var Cat=&#123;</div><div class="line">	name:&apos;&apos;;</div><div class="line">	color:&apos;&apos;;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<p>现在，我们需要根据这个原型对象的规格（schema），生成两个实例对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var cat1=&#123;&#125;;</div><div class="line">cat1.name=&quot;one&quot;;</div><div class="line">cat1.color=&quot;two&quot;;</div></pre></td></tr></table></figure></p>
-<p>好了，这就是最简单的封装了，把两个属性封装在一个对象里面。但是，这样的写法有两个缺点，一是如果多生成几个实例，写起来就非常麻烦；二是实例与原型之间，没有任何办法，可以看出有什么联系。</p>
-<h4 id="二、-原始模式的改进"><a href="#二、-原始模式的改进" class="headerlink" title="二、 原始模式的改进"></a>二、 原始模式的改进</h4><p>我们可以写一个函数，解决代码重复的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Cat(name,color)&#123;</div><div class="line">	return&#123;</div><div class="line">		name:name,</div><div class="line">		color:color</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后生成实例对象，就等于是在调用函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cat1=Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">var cat2=Cat(&quot;three&quot;,&quot;four&quot;);</div></pre></td></tr></table></figure></p>
-<p>这种方法的问题依然是，cat1和cat2之间没有内在的联系，不能反映出它们是同一个原型对象的实例。</p>
-<h4 id="三、-构造函数模式"><a href="#三、-构造函数模式" class="headerlink" title="三、 构造函数模式"></a>三、 构造函数模式</h4><p>为了解决从原型对象生成实例的问题，Javascript提供了一个构造函数（Constructor）模式。<br>所谓”构造函数”，其实就是一个普通函数，但是内部使用了this变量。对构造函数使用new运算符，就能生成实例，并且this变量会绑定在实例对象上。<br>比如，猫的原型对象现在可以这样写，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Cat(name,color)&#123;</div><div class="line">	this.name=name;</div><div class="line">	this.color=color;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们现在就可以生成实例对象了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">var cat2=new Cat(&quot;three&quot;,&quot;four&quot;);</div></pre></td></tr></table></figure></p>
-<p>这时cat1和cat2会自动含有一个constructor属性，指向它们的构造函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(cat1.constructor == Cat); //true</div><div class="line">alert(cat2.constructor == Cat); //true</div></pre></td></tr></table></figure></p>
-<p>Javascript还提供了一个instanceof运算符，验证原型对象与实例对象之间的关系。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(cat1 instanceof Cat); //true</div><div class="line">alert(cat2 instanceof Cat); //true</div></pre></td></tr></table></figure></p>
-<h4 id="四、构造函数模式的问题"><a href="#四、构造函数模式的问题" class="headerlink" title="四、构造函数模式的问题"></a>四、构造函数模式的问题</h4><p>构造函数方法很好用，但是存在一个浪费内存的问题。<br>请看，我们现在为Cat对象添加一个不变的属性type（种类），再添加一个方法eat（吃）。那么，原型对象Cat就变成了下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Cat(name,color)&#123;</div><div class="line">　　　　this.name = name;</div><div class="line">　　　　this.color = color;</div><div class="line">　　　　this.type = &quot;猫科动物&quot;;</div><div class="line">　　　　this.eat = function()&#123;alert(&quot;吃老鼠&quot;);&#125;;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
-<p>还是采用同样的方法，生成实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var cat1 = new Cat(&quot;大毛&quot;,&quot;黄色&quot;);</div><div class="line">var cat2 = new Cat (&quot;二毛&quot;,&quot;黑色&quot;);</div><div class="line">alert(cat1.type); // 猫科动物</div><div class="line">cat1.eat(); // 吃老鼠</div></pre></td></tr></table></figure></p>
-<p>表面上好像没什么问题，但是实际上这样做，有一个很大的弊端。那就是对于每一个实例对象，type属性和eat()方法都是一模一样的内容，每一次生成一个实例，都必须为重复的内容，多占用一些内存。这样既不环保，也缺乏效率。<br><code>alert(cat1.eat == cat2.eat); //false</code><br>能不能让type属性和eat()方法在内存中只生成一次，然后所有实例都指向那个内存地址呢？回答是可以的。</p>
-<h4 id="五、-Prototype模式"><a href="#五、-Prototype模式" class="headerlink" title="五、 Prototype模式"></a>五、 Prototype模式</h4><p>Javascript规定，每一个构造函数都有一个prototype属性，指向另一个对象。这个对象的所有属性和方法，都会被构造函数的实例继承。<br>这意味着，我们可以把那些不变的属性和方法，直接定义在prototype对象上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Cat(name,color)&#123;</div><div class="line">	this.name=name;</div><div class="line">	this.color=color;</div><div class="line">&#125;</div><div class="line">Cat.prototype.type=&quot;猫科动物&quot;;</div><div class="line">Cat.prototype.eat=function()&#123;alert(&apos;吃老鼠&apos;)&#125;;</div></pre></td></tr></table></figure></p>
-<p>然后，生成实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var cat1 = new Cat(&quot;大毛&quot;,&quot;黄色&quot;);</div><div class="line">var cat2 = new Cat(&quot;二毛&quot;,&quot;黑色&quot;);</div><div class="line">alert(cat1.type); // 猫科动物</div><div class="line">cat1.eat(); // 吃老鼠</div></pre></td></tr></table></figure></p>
-<p>这时所有实例的type属性和eat()方法，其实都是同一个内存地址，指向prototype对象，因此就提高了运行效率。<br><code>alert(cat1.eat == cat2.eat); //true</code></p>
-<h4 id="六、-Prototype模式的验证方法"><a href="#六、-Prototype模式的验证方法" class="headerlink" title="六、 Prototype模式的验证方法"></a>六、 Prototype模式的验证方法</h4><p>为了配合prototype属性，Javascript定义了一些辅助方法，帮助我们使用它。</p>
-<h5 id="6-1-isPrototypeOf"><a href="#6-1-isPrototypeOf" class="headerlink" title="6.1 isPrototypeOf()"></a>6.1 isPrototypeOf()</h5><p>这个方法用来判断，某个proptotype对象和某个实例之间的关系。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(Cat.prototype.isPrototypeOf(cat1)); //true</div><div class="line">alert(Cat.prototype.isPrototypeOf(cat2)); //true</div></pre></td></tr></table></figure></p>
-<h5 id="6-2-hasOwnProperty"><a href="#6-2-hasOwnProperty" class="headerlink" title="6.2 hasOwnProperty()"></a>6.2 hasOwnProperty()</h5><p>每个实例对象都有一个hasOwnProperty()方法，用来判断某一个属性到底是本地属性，还是继承自prototype对象的属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(cat1.hasOwnProperty(&quot;name&quot;)); // true</div><div class="line">alert(cat1.hasOwnProperty(&quot;type&quot;)); // false</div></pre></td></tr></table></figure></p>
-<h5 id="6-3-in运算符"><a href="#6-3-in运算符" class="headerlink" title="6.3 in运算符"></a>6.3 in运算符</h5><p>in运算符可以用来判断，某个实例是否含有某个属性，不管是不是本地属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(&quot;name&quot; in cat1); // true</div><div class="line">alert(&quot;type&quot; in cat1); // true</div></pre></td></tr></table></figure></p>
-<p>in运算符还可以用来遍历某个对象的所有属性。<br><code>for(var prop in cat1) { alert(&quot;cat1[&quot;+prop+&quot;]=&quot;+cat1[prop]); }</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/封装/">展开全文 >></a>
         </p>
       
 
@@ -652,27 +660,41 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
 
 
   
-    <article id="post-Web配色基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-win工具/Windows必备神器Cmder" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/29/Web配色基础/">Web配色基础</a>
+      <a class="article-title" href="/2016/11/08/win工具/Windows必备神器Cmder/">Windows必备神器Cmder</a>
     </h1>
   
 
         
-        <a href="/2016/11/29/Web配色基础/" class="archive-article-date">
-  	<time datetime="2016-11-29T05:24:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-29</time>
+        <a href="/2016/11/08/win工具/Windows必备神器Cmder/" class="archive-article-date">
+  	<time datetime="2016-11-08T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="../images/avatar.jpg" alt="色相与色调"></p>
+        <p>Cmder is a software package created out of pure frustration over the absence of nice console emulators on Windows. It is based on amazing software, and spiced up with the Monokai color scheme and a custom prompt layout, looking sexy from the start.</p>
+<p><img src="/assets/win_tools/cmder.jpg"></p>
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><ul>
+<li>官方网站：<a href="http://cmder.net/" target="_blank" rel="external">cmder.net</a></li>
+<li>打开Cmder官网，下拉页面找到Download项选择下载，下载的时候，有两个版本，分别是mini与full版；两个的差别在于有没有内建git-for-windows工具；我这里选择full版本点击下载。下载的是Cmder的压缩包, 可即压即用。</li>
+</ul>
+<h3 id="Use"><a href="#Use" class="headerlink" title="Use"></a>Use</h3><ol>
+<li><p><strong>把 Cmder 加到环境变量</strong><br>把Cmder.exe存放的目录添加到系统环境变量；加完之后,Win+r一下输入cmder,即可。</p>
+</li>
+<li><p><strong>添加 cmder到右键菜单</strong><br>添加后在任意文件夹中即可打开Cmder，上一步的把 Cmder 加到环境变量就是为此服务的, 在管理员权限的终端输入以下语句即可:<br>Cmder.exe /REGISTER ALL</p>
+</li>
+<li><p><strong>为Cmder.exe创建快捷方式</strong><br>右击Cmder.exe选择“创建快捷方式”点击即可，以后打开Cmder.exe只要点击桌面对应的快捷方式即可</p>
+</li>
+</ol>
+<h3 id="Cmder常用快捷键"><a href="#Cmder常用快捷键" class="headerlink" title="Cmder常用快捷键"></a>Cmder常用快捷键</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">利用Tab，自动路径补全；</div><div class="line">利用Ctrl+T建立新页签；利用Ctrl+W关闭页签;</div><div class="line">利用Ctrl+Tab切换页签;</div><div class="line">Alt+F4：关闭所有页签</div><div class="line">Alt+Shift+1：开启cmd.exe</div><div class="line">Alt+Shift+2：开启powershell.exe</div><div class="line">Alt+Shift+3：开启powershell.exe (系统管理员权限)</div><div class="line">Ctrl+1：快速切换到第1个页签</div><div class="line">Ctrl+n：快速切换到第n个页签( n值无上限)</div><div class="line">Alt + enter： 切换到全屏状态；</div><div class="line">Ctr+r 历史命令搜索</div><div class="line">2, 可在视窗内搜寻画面上出现过的任意关键字。</div><div class="line">3, 新增页签按钮。</div><div class="line">4, 切换页签按钮。</div><div class="line">5, 锁定视窗，让视窗无法再输入。</div><div class="line">6, 切换视窗是否提供卷轴功能，启动时可查询之前显示过的内容。</div><div class="line">7, 按下滑鼠左键可开启系统选单，滑鼠右键可开启工具选项视窗。 W<span class="keyword">in</span>+Alt+P  ：开启工具选项视窗</div></pre></td></tr></table></figure>
 
       
 
@@ -686,7 +708,7 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端Web</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">win10</a>
         		</li>
       		
 		</ul>
@@ -696,7 +718,7 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/29/Web配色基础/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/11/08/win工具/Windows必备神器Cmder/">展开全文 >></a>
         </p>
       
 
@@ -799,19 +821,15 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">软件</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Win小工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
             
             <div class="clearfix"></div>

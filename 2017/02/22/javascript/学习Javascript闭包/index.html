@@ -8,19 +8,16 @@
   <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
   <title>学习Javascript闭包（Closure） | PSweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。下面就是我的学习笔记，对于Javascript初学者应该是很有用的。
-一、变量的作用域要理解闭包，首先必须理解Javascript特殊的变量作用域。变量的作用域无非就是两种：全局变量和局部变量。Javascript语言的特殊之处，就在于函数内部可以直接读取全局变量12345var n=999;f">
+  <meta name="description" content="闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。下面就是我的学习笔记，对于Javascript初学者应该是很有用的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习Javascript闭包（Closure）">
-<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/22/学习Javascript闭包/index.html">
+<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/22/javascript/学习Javascript闭包/index.html">
 <meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。下面就是我的学习笔记，对于Javascript初学者应该是很有用的。
-一、变量的作用域要理解闭包，首先必须理解Javascript特殊的变量作用域。变量的作用域无非就是两种：全局变量和局部变量。Javascript语言的特殊之处，就在于函数内部可以直接读取全局变量12345var n=999;f">
-<meta property="og:updated_time" content="2017-02-22T07:19:40.000Z">
+<meta property="og:description" content="闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。下面就是我的学习笔记，对于Javascript初学者应该是很有用的。">
+<meta property="og:updated_time" content="2017-03-26T13:00:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Javascript闭包（Closure）">
-<meta name="twitter:description" content="闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。下面就是我的学习笔记，对于Javascript初学者应该是很有用的。
-一、变量的作用域要理解闭包，首先必须理解Javascript特殊的变量作用域。变量的作用域无非就是两种：全局变量和局部变量。Javascript语言的特殊之处，就在于函数内部可以直接读取全局变量12345var n=999;f">
+<meta name="twitter:description" content="闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。下面就是我的学习笔记，对于Javascript初学者应该是很有用的。">
   
     <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
   
@@ -148,7 +145,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-学习Javascript闭包" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="page-javascript/学习Javascript闭包" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -160,7 +157,7 @@
   
 
         
-        <a href="/2017/02/22/学习Javascript闭包/" class="archive-article-date">
+        <a href="/2017/02/22/javascript/学习Javascript闭包/" class="archive-article-date">
   	<time datetime="2017-02-22T07:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
 </a>
         
@@ -169,6 +166,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。<br>下面就是我的学习笔记，对于Javascript初学者应该是很有用的。</p>
+<a id="more"></a>
 <h5 id="一、变量的作用域"><a href="#一、变量的作用域" class="headerlink" title="一、变量的作用域"></a>一、变量的作用域</h5><p>要理解闭包，首先必须理解Javascript特殊的变量作用域。<br>变量的作用域无非就是两种：全局变量和局部变量。<br>Javascript语言的特殊之处，就在于函数内部可以直接读取全局变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var n=999;</div><div class="line">function f1()&#123;</div><div class="line">	alert(n);</div><div class="line">&#125;</div><div class="line">f1();//999</div></pre></td></tr></table></figure></p>
 <p>另一方面，在函数外部自然无法读取函数内的局部变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">	var n=999;</div><div class="line">&#125;</div><div class="line">alert(n);//error</div></pre></td></tr></table></figure></p>
 <p>这里有一个地方需要注意，函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">	n=999;</div><div class="line">&#125;</div><div class="line">f1();</div><div class="line">alert(n);//999</div></pre></td></tr></table></figure></p>
@@ -215,6 +213,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -265,7 +274,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/22/学习Javascript闭包/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/22/javascript/学习Javascript闭包/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,8 +289,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2017/02/22/Javascript的正则表达式/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">正则表达式</div>
+    <a href="/2017/02/22/javascript/Javascript的正则表达式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript正则表达式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -295,7 +304,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="学习Javascript闭包" data-title="学习Javascript闭包（Closure）" data-url="https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/22/学习Javascript闭包/"></div>
+	<div class="ds-thread" data-thread-key="javascript/学习Javascript闭包" data-title="学习Javascript闭包（Closure）" data-url="https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/22/javascript/学习Javascript闭包/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -395,19 +404,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">软件</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Win小工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
             
             <div class="clearfix"></div>
