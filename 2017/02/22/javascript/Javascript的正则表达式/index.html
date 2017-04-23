@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>javascript正则表达式 | PSweet</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="不模仿现实  &lt;br&gt;但构建真实">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="javascript正则表达式 | PSweet">
+    <meta name="twitter:description" content="不模仿现实  &lt;br&gt;但构建真实">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="javascript正则表达式 | PSweet">
+    <meta property="og:description" content="不模仿现实  &lt;br&gt;但构建真实">
+
+    
+    <meta name="author" content="PSweet">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/22/javascript/Javascript的正则表达式/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+<<<<<<< HEAD
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+=======
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+>>>>>>> 50514ac2de8159988ef15dcd4f5922c13d0568e0
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 PSweet 的主页"><img src="/images/avatar.jpg" width="80" alt="PSweet logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for PSweet">PSweet</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">简单，美好，奋发</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">不模仿现实  <br>但构建真实</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
+            
+              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/mrpsweet" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/PSweet_Amor" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+
+  <li class="navigation__item">
+    <a href="mailto:11018025@qq.com" title="邮件联系我" target="_blank">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-02-22T01:46:46.000Z" class="post-list__meta--date date">2017-02-22</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/javascript/">javascript</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">javascript正则表达式</h1>
+  </header>
+
+  <section class="post">
+    <p>正则表达式（英语：Regular Expression，在代码中常简写为regex、regexp或RE）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串搜索模式。<br>搜索模式可用于文本搜索和文本替换。</p>
+<h5 id="什么是正则表达式？"><a href="#什么是正则表达式？" class="headerlink" title="什么是正则表达式？"></a>什么是正则表达式？</h5><p>正则表达式是由一个字符序列形成的搜索模式。<br>当你在文本中搜索数据时，你可以用搜索模式来描述你要查询的内容。<br>正则表达式可以是一个简单的字符，或一个更复杂的模式。<br>正则表达式可用于所有文本搜索和文本替换的操作。</p>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29932475&auto=0&height=66"></iframe></p>
+<hr>
+<a id="more"></a>
+<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><blockquote>
+<p>/正则表达式主体/修饰符(可选)    </p>
+</blockquote>
+<p>其中修饰符是可选的<br><code>var part=/paul/i</code><br>== /paul/i== 是一个正则表达式。<br>== paul== 是一个正则表达式主体 (用于检索)。<br>== i== 是一个修饰符 (搜索不区分大小写)。  </p>
+<h5 id="使用字符串方法"><a href="#使用字符串方法" class="headerlink" title="使用字符串方法"></a>使用字符串方法</h5><p>在 JavaScript 中，正则表达式通常用于两个字符串方法 : search() 和 replace()。<br>== search() 方法== 用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，并返回子串的起始位置。<br>== replace() 方法== 用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。</p>
+<h6 id="search-方法使用正则表达式"><a href="#search-方法使用正则表达式" class="headerlink" title="search() 方法使用正则表达式"></a>search() 方法使用正则表达式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">使用正则表达式搜索“paul”字符串,且不区分大小写：</div><div class="line">var str = &quot;Visit Paul!&quot;;</div><div class="line">var n = str.search(/Paul/i);</div></pre></td></tr></table></figure>
+<h6 id="search-方法使用字符串"><a href="#search-方法使用字符串" class="headerlink" title="search() 方法使用字符串"></a>search() 方法使用字符串</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">search 方法可使用字符串作为参数。字符串参数会转换为正则表达式：</div><div class="line">var str = &quot;Visit Paul!&quot;;</div><div class="line">var n = str.search(&quot;Paul&quot;);</div></pre></td></tr></table></figure>
+<h6 id="replace-方法使用正则表达式"><a href="#replace-方法使用正则表达式" class="headerlink" title="replace() 方法使用正则表达式"></a>replace() 方法使用正则表达式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	使用正则表达式且不区分大小写将字符串中的 Microsoft 替换为 Paul :</div><div class="line">	var str = document.getElementById(&quot;demo&quot;).innerHTML; </div><div class="line">var txt = str.replace(/microsoft/i,&quot;Paul&quot;);</div></pre></td></tr></table></figure>
+<h6 id="replace-方法使用字符串"><a href="#replace-方法使用字符串" class="headerlink" title="replace() 方法使用字符串"></a>replace() 方法使用字符串</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">replace() 方法将接收字符串作为参数：</div><div class="line">var str = document.getElementById(&quot;demo&quot;).innerHTML; </div><div class="line">var txt = str.replace(&quot;Microsoft&quot;,&quot;Paul&quot;);</div></pre></td></tr></table></figure>
+<h4 id="使用-RegExp-对象"><a href="#使用-RegExp-对象" class="headerlink" title="使用 RegExp 对象"></a>使用 RegExp 对象</h4><p>在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象。</p>
+<h4 id="使用-test"><a href="#使用-test" class="headerlink" title="使用 test()"></a>使用 test()</h4><p>test() 方法是一个正则表达式方法。<br>test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。<br>以下实例用于搜索字符串中的字符 “e”：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var part = /e/;</div><div class="line">part.test(&quot;The best things in life are free!&quot;);</div></pre></td></tr></table></figure></p>
+<h4 id="使用-exec"><a href="#使用-exec" class="headerlink" title="使用 exec()"></a>使用 exec()</h4><p>exec() 方法是一个正则表达式方法。<br>exec() 方法用于检索字符串中的正则表达式的匹配。<br>该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。<br>以下实例用于搜索字符串中的字母 “e”:<br><code>/e/.exec(&quot;The best things in life are free!&quot;);</code></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/02/22/javascript/学习Javascript闭包/" title="学习Javascript闭包（Closure）">学习Javascript闭包（Closure）</a></h2>
+                <p class="excerpt">
+                
+                闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。下面就是我的学习笔记，对于Javascript初学者应该是很有用的。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-02-22T07:13:29.000Z" class="post-list__meta--date date">2017-02-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/javascript/">javascript</a>
+</span><a class="btn-border-small" href="/2017/02/22/javascript/学习Javascript闭包/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/02/21/封装/" title="封装">封装</a></h2>
+                <p class="excerpt">
+                
+                Javascript 面向对象编程（一）：封装Javascript是一种基于对象（object-based）的语言，你遇到的所有东西几乎都是对象。但是，它又不是一种真正的面向对象编程（OOP）语言，因为它的语法中没有class（类）。那么，如果我们要把”属性”（property）和”方法”（method），封装成一个对象，甚至要从原型对象生成一个实例对象，我们应该怎么做呢？
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-02-21T01:46:46.000Z" class="post-list__meta--date date">2017-02-21</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/javascript/">javascript</a>
+</span><a class="btn-border-small" href="/2017/02/21/封装/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+    
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
