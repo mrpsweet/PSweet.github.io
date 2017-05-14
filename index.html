@@ -426,6 +426,73 @@
 
 
   
+    <article id="post-git常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/22/git常用命令/">git 常用命令</a>
+    </h1>
+  
+
+        
+        <a href="/2016/12/22/git常用命令/" class="archive-article-date">
+  	<time datetime="2016-12-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果指向克隆最新的版本<code>git clone --depth=1</code></p>
+<p>显示某次提交的内容<code>git show $id</code></p>
+<p>抛弃工作区修改<code>git co --&lt;file&gt;</code></p>
+<p>将工作文件修改到暂存区<code>git add &lt;file&gt;</code></p>
+<p>从版本库中删除文件<code>git rm &lt;file&gt;</code><br>从版本库中删除文件，但不删除文件<code>git rm &lt;file&gt; --cached</code></p>
+<p>提交你的修改<code>git commit -m &#39;??&#39;</code></p>
+<p>提交更新到远程服务器<code>git push</code></p>
+<p>从远程服务器，更新合并本地项目<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	git fetch origin master  </div><div class="line">	git <span class="built_in">log</span> -p master..origin/master  </div><div class="line">	git merge origin/master </div><div class="line">```   </div><div class="line"></div><div class="line">	可以简化为此-----&gt; </div><div class="line">	  </div><div class="line">	  </div><div class="line">```bash</div><div class="line">	git fetch origin master:tmp</div><div class="line">	git diff tmp </div><div class="line">	git merge tmp</div></pre></td></tr></table></figure></p>
+<p> 以上命令的含义：<br>   首先从远程的origin的master主分支下载最新的版本到origin/master分支上<br>   然后比较本地的master分支和origin/master分支的差别<br>   最后进行合并<br>   上述过程其实可以用以下更清晰的方式来进行：</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/22/git常用命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-大道至简：Angular2只有一个核心概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -478,53 +545,6 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/12/15/大道至简：Angular2只有一个核心概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-angularjs的$on、$emit、$broadcast" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="angularjs的-on、-emit、-broadcast"><a href="#angularjs的-on、-emit、-broadcast" class="headerlink" title="angularjs的 $on、$emit、$broadcast"></a>angularjs的 $on、$emit、$broadcast</h2><p>####区别<br>如何在作用域之间通信呢？<br>    1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。<br>    2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。</p>
-<p>$on、$emit和$broadcast使得event、data在controller之间的传递变的简单。<br>$emit：子传父  传递event与data<br>$broadcast：父传子 child controller传递event与data<br>$on：监听或接收数据。。用于接收event与data</p>
-<p>$broadcast、$emit事件必须依靠其他事件（ng-click等）进行触发，而不能单纯写一个这个。。<br>$on倒是可以直接写，因为它属于监听和接收数据的。</p>
-<p>$on的方法中的event事件参数：</p>
-<ol>
-<li>event.name 事件名称    </li>
-<li>event.targetScope  发出或者传播原始事件的作用域   </li>
-<li>event.currentScope 目前正在处理的事件的作用域    </li>
-<li>event.stopPropagation()    一个防止事件进一步传播(冒泡/捕获)的函数(这只适用于使用<code>$emit</code>发出的事件)  </li>
-<li>event.preventDefault() 这个方法实际上不会做什么事，但是会设置<code>defaultPrevented</code>为true。直到事件监听器的实现者采取行动之前它才会检查<code>defaultPrevented</code>的值。   </li>
-<li>event.defaultPrevented 如果调用了<code>preventDefault</code>则为true    </li>
-</ol>
-<hr>
-<p>####DEMO</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"> 1 &lt;style&gt;</div><div class="line"> 2     div&#123;border:1px solid #ff7300;padding:20px;margin:10px;border-radius: 5px;&#125;</div><div class="line"> 3 &lt;/style&gt;</div><div class="line"> 4 &lt;div ng-controller="ParentController"&gt;&lt;!--父级--&gt;</div><div class="line"> 5     &lt;div  ng-click="clkP()"&gt;click--给child&lt;/div&gt;</div><div class="line"> 6     &lt;div ng-controller="OneSelfController"&gt;&lt;!--自己--&gt;</div><div class="line"> 7         &lt;span ng-click="clkme()"&gt;click me&lt;/span&gt;</div><div class="line"> 8         &lt;div ng-controller="ChildController"&gt;</div><div class="line"> 9             它是OneSelfController的子级</div><div class="line">10         &lt;/div&gt;&lt;!--子级--&gt;</div><div class="line">11     &lt;/div&gt;</div><div class="line">12     &lt;div ng-controller="siblingsController"&gt;</div><div class="line">13         它与OneSelfController是平级</div><div class="line">14     &lt;/div&gt;&lt;!--平级--&gt;</div><div class="line">15 &lt;/div&gt;</div><div class="line">16 </div><div class="line">17 &lt;script&gt;</div><div class="line">18     var app=angular.module('firstApp',[]);//app模块名</div><div class="line">19     app.controller('OneSelfController',function($scope)&#123;</div><div class="line">20         $scope.clkme=function()&#123;</div><div class="line">21             $scope.$broadcast('sendChild','我给子控制器传递数据');</div><div class="line">22             $scope.$emit('sendParent','冒泡到父元素')</div><div class="line">23         &#125;</div><div class="line">24     &#125;).controller('ParentController',function($scope)&#123;</div><div class="line">25         $scope.$on('sendParent',function(event,data)&#123;//监听在子控制器中定义的 sendParent 事件</div><div class="line">26             console.log('OneSelfController传过来的',data,event.name,event);//事件名称：sendParent</div><div class="line">27         &#125;);</div><div class="line">28         $scope.clkP=function()&#123;</div><div class="line">29             $scope.$broadcast('sendAllChild','让siblingsController接收到');</div><div class="line">30         &#125;</div><div class="line">31 </div><div class="line">32     &#125;).controller('ChildController', function($scope)&#123;</div><div class="line">33         $scope.$on('sendChild', function(event,data) &#123;//监听在子控制器中定义的 sendChild 事件</div><div class="line">34             console.log('ChildCtrl', data,event.name,event);// 事件名称：sendChild</div><div class="line">35         &#125;);</div><div class="line">36     &#125;).controller('siblingsController', function($scope)&#123;</div><div class="line">37         $scope.$on('sendAllChild',function(event,data) &#123;</div><div class="line">38             console.log('值过来吧', data);</div><div class="line">39         &#125;);</div><div class="line">40         //下面事件不会触发</div><div class="line">41         $scope.$on('sendParent', function(event,data) &#123;</div><div class="line">42             console.log('平级得不到值', data);</div><div class="line">43         &#125;);</div><div class="line">44         $scope.$on('sendChild', function(event,data) &#123;</div><div class="line">45             console.log('平级得不到值', data);</div><div class="line">46         &#125;);</div><div class="line">47     &#125;);</div><div class="line">48 </div><div class="line">49 &lt;/script&gt;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/30/angularjs的$on、$emit、$broadcast/">展开全文 >></a>
         </p>
       
 
@@ -846,6 +866,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">javascript angular1</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>

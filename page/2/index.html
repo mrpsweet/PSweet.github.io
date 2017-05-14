@@ -206,36 +206,30 @@
 
 
   
-    <article id="post-git常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-angularjs的$on、$emit、$broadcast" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/28/git常用命令/">git 的常用命令</a>
+      <a class="article-title" href="/2016/10/22/angularjs的$on、$emit、$broadcast/">angularjs的传值</a>
     </h1>
   
 
         
-        <a href="/2016/10/28/git常用命令/" class="archive-article-date">
-  	<time datetime="2016-10-28T06:40:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-28</time>
+        <a href="/2016/10/22/angularjs的$on、$emit、$broadcast/" class="archive-article-date">
+  	<time datetime="2016-10-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>如果指向克隆最新的版本<code>git clone --depth=1</code></p>
-<p>显示某次提交的内容<code>git show $id</code></p>
-<p>抛弃工作区修改<code>git co --&lt;file&gt;</code></p>
-<p>将工作文件修改到暂存区<code>git add &lt;file&gt;</code></p>
-<p>从版本库中删除文件<code>git rm &lt;file&gt;</code><br>从版本库中删除文件，但不删除文件<code>git rm &lt;file&gt; --cached</code></p>
-<p>提交你的修改<code>git commit -m &#39;??&#39;</code></p>
-<p>提交更新到远程服务器<code>git push</code></p>
-<p>从远程服务器，更新合并本地项目<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	git fetch origin master  </div><div class="line">	git <span class="built_in">log</span> -p master..origin/master  </div><div class="line">	git merge origin/master </div><div class="line">```   </div><div class="line"></div><div class="line">	可以简化为此-----&gt; </div><div class="line">	  </div><div class="line">	  </div><div class="line">```bash</div><div class="line">	git fetch origin master:tmp</div><div class="line">	git diff tmp </div><div class="line">	git merge tmp</div></pre></td></tr></table></figure></p>
-<p> 以上命令的含义：<br>   首先从远程的origin的master主分支下载最新的版本到origin/master分支上<br>   然后比较本地的master分支和origin/master分支的差别<br>   最后进行合并<br>   上述过程其实可以用以下更清晰的方式来进行：</p>
-
+        <p>####区别<br>如何在作用域之间通信呢？<br>1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。<br>2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。<br>
+        
+          <a class="article-more-a" href="/2016/10/22/angularjs的$on、$emit、$broadcast/#more">more >></a>
+        
       
 
       
@@ -243,11 +237,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">javascript angular1</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/28/git常用命令/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/10/22/angularjs的$on、$emit、$broadcast/">展开全文 >></a>
         </p>
       
 
@@ -526,6 +531,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">javascript angular1</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
