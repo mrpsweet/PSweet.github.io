@@ -146,6 +146,220 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript/Angular2核心概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/22/javascript/Angular2核心概念/">Angular2 核心概念</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/22/javascript/Angular2核心概念/" class="archive-article-date">
+  	<time datetime="2017-04-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。</p>
+<pre><code>从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
+
+所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。
+
+接下来罗列一下Angular2与之前的1.x相比带来的核心改变。
+
+第一点：Angular2删掉了$scope的概念。
+
+在ng1.x里面，$scope是一个相当强大又相当可怕的东西，一言不合就让开发者自己$apply。ng2响应社区的强烈吐槽，删除（或者说隐藏）了$scope这个东西，开发者不再需要感知到它的存在，另外，由于ng2引入了zone.js，所以即使在各种回调函数中修改数据模型也不需要手动$apply()了。
+
+这一点说明了群众们吐槽的力量还是相当强大的！
+
+第二点：删掉了ng-controller指令。
+
+Controller终于和Component合体了，小僧想说的是，人家Backbone早就这么做了，你们一开始只顾着自己挖坑，也不看看友军的战法，还好浪子回头为时不晚。
+
+第三点：大幅度演进了脏值检测机制。
+
+大家都知道，”双向数据绑定“之所以能工作，都是因为底层有”脏值检测“这么一个神奇的东西。而实际上ng1.x里面的脏值检测机制的运行效率是非常差的，这就是为什么大家一直在吐槽绑定的对象不能太多、太深的原因。
+
+那么，在ng2中，大幅度演进了这一机制，不仅引入了单向绑定，还引入了各种绑定策略，例如：只检测一次、利用JIT动态生成脏值检测代码等等。毫无疑问，有了这些工具之后，数据绑定效率不再是问题。
+
+第四点：嵌套路由问题。
+
+大家都知道，在ng1.x里面有一个非常讨厌的问题，官方的路由机制是不能嵌套的，这就导致大家在开发的过程中不得不依赖于第三方的ui-router库。ng2中没有这个问题了，因为ng2的路由是基于Component的，天然就支持嵌套。
+
+第五点：依赖注入机制改造。
+
+ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开发团队里面混入了Java大神。如果你熟悉Spring那一套注解的用法，那么写ng2的组件几乎没有学习成本。
+
+第六点：框架整体上基于TypeScript开发。
+
+这是最大的一个变更，但是大家不用害怕，因为你只要记住我一句话就再也没有顾虑了：TypeScript和ActionScript3一样，不过是变态版的Java而已。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/22/javascript/Angular2核心概念/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-javascript/构造函数的继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/23/javascript/构造函数的继承/">构造函数的继承</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/23/javascript/构造函数的继承/" class="archive-article-date">
+  	<time datetime="2017-03-23T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Javascript面向对象编程（二）：构造函数的继承"><a href="#Javascript面向对象编程（二）：构造函数的继承" class="headerlink" title="Javascript面向对象编程（二）：构造函数的继承"></a>Javascript面向对象编程（二）：构造函数的继承</h3><p>这个系列的第一部分，主要介绍了如何”封装”数据和方法，以及如何从原型对象生成实例。<br>今天要介绍的是，对象之间的”继承”的五种方法。</p>
+        
+          <a class="article-more-a" href="/2017/03/23/javascript/构造函数的继承/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/23/javascript/构造函数的继承/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-javascript/函数的继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/javascript/函数的继承/">javascript正则表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/22/javascript/函数的继承/" class="archive-article-date">
+  	<time datetime="2017-03-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="函数的继承"><a href="#函数的继承" class="headerlink" title="函数的继承"></a>函数的继承</h3><p>这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。<br>今天是最后一个部分，介绍不使用构造函数实现”继承”。<br>
+        
+          <a class="article-more-a" href="/2017/03/22/javascript/函数的继承/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/22/javascript/函数的继承/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-javascript/学习Javascript闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -271,19 +485,19 @@
 
 
   
-    <article id="post-封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-javascript/$scope.watch的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/21/封装/">封装</a>
+      <a class="article-title" href="/2017/02/21/javascript/$scope.watch的用法/">$scope.watch的用法</a>
     </h1>
   
 
         
-        <a href="/2017/02/21/封装/" class="archive-article-date">
+        <a href="/2017/02/21/javascript/$scope.watch的用法/" class="archive-article-date">
   	<time datetime="2017-02-21T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
 </a>
         
@@ -291,9 +505,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Javascript-面向对象编程（一）：封装"><a href="#Javascript-面向对象编程（一）：封装" class="headerlink" title="Javascript 面向对象编程（一）：封装"></a>Javascript 面向对象编程（一）：封装</h3><p>Javascript是一种基于对象（object-based）的语言，你遇到的所有东西几乎都是对象。但是，它又不是一种真正的面向对象编程（OOP）语言，因为它的语法中没有class（类）。<br>那么，如果我们要把”属性”（property）和”方法”（method），封装成一个对象，甚至要从原型对象生成一个实例对象，我们应该怎么做呢？</p>
+        <h4 id="watch简介"><a href="#watch简介" class="headerlink" title="$watch简介"></a>$watch简介</h4><p>在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。<br>AngularJS内部的watch实现了页面随model的及时更新。<br>$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。   </p>
         
-          <a class="article-more-a" href="/2017/02/21/封装/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/21/javascript/$scope.watch的用法/#more">more >></a>
         
       
 
@@ -317,7 +531,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/21/封装/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/21/javascript/$scope.watch的用法/">展开全文 >></a>
         </p>
       
 
@@ -332,74 +546,30 @@
 
 
   
-    <article id="post-函数的继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-javascript/封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="函数的继承"><a href="#函数的继承" class="headerlink" title="函数的继承"></a>函数的继承</h3><p>这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。<br>今天是最后一个部分，介绍不使用构造函数实现”继承”。</p>
-<h4 id="一、什么是”非构造函数”的继承？"><a href="#一、什么是”非构造函数”的继承？" class="headerlink" title="一、什么是”非构造函数”的继承？"></a>一、什么是”非构造函数”的继承？</h4><p>比如，现在有一个对象，叫做”中国人”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Chinese = &#123;</div><div class="line">　　　　nation:&apos;中国&apos;</div><div class="line">　　&#125;;</div></pre></td></tr></table></figure></p>
-<p>还有一个对象，叫做”医生”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Doctor =&#123;</div><div class="line">　　　　career:&apos;医生&apos;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
-<p>请问怎样才能让”医生”去继承”中国人”，也就是说，我怎样才能生成一个”中国医生”的对象？<br>这里要注意，这两个对象都是普通对象，不是构造函数，无法使用构造函数方法实现”继承”。</p>
-<h4 id="二、object-方法"><a href="#二、object-方法" class="headerlink" title="二、object()方法"></a>二、object()方法</h4><p>json格式的发明人Douglas Crockford，提出了一个object()函数，可以做到这一点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function object(o)&#123;</div><div class="line">	function F()&#123;&#125;</div><div class="line">	F.prototype=o;</div><div class="line">	return new F();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这个object()函数，其实只做一件事，就是把子对象的prototype属性，指向父对象，从而使得子对象与父对象连在一起。<br>使用的时候，第一步先在父对象的基础上，生成子对象：<br><code>var Doctor=object(Chinese);</code><br>然后，再加上子对象本身的属性：<br><code>Doctor.career = &#39;医生&#39;;</code><br>这时，子对象已经继承了父对象的属性了。<br><code>alert(Doctor.nation); //中国</code></p>
-<h4 id="三、浅拷贝"><a href="#三、浅拷贝" class="headerlink" title="三、浅拷贝"></a>三、浅拷贝</h4><p>除了使用”prototype链”以外，还有另一种思路：把父对象的属性，全部拷贝给子对象，也能实现继承。<br>下面这个函数，就是在做拷贝：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function extendCopy(p)&#123;</div><div class="line">	var c=&#123;&#125;;</div><div class="line">	for(var i in p)&#123;</div><div class="line">		c[i]=p[i];</div><div class="line">	&#125;</div><div class="line">	c.uber=p;</div><div class="line">	return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用的时候，这样写:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Doctor = extendCopy(Chinese);</div><div class="line">Doctor.career = &apos;医生&apos;;</div><div class="line">alert(Doctor.nation); // 中国</div></pre></td></tr></table></figure></p>
-<p>但是，这样的拷贝有一个问题。那就是，如果父对象的属性等于数组或另一个对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被篡改的可能。<br>请看，现在给Chinese添加一个”出生地”属性，它的值是一个数组。<br><code>Chinese.birthPlaces = [&#39;北京&#39;,&#39;上海&#39;,&#39;香港&#39;];</code><br>通过extendCopy()函数，Doctor继承了Chinese。<br><code>var Doctor=extendCopy(Chinese);</code><br>然后，我们为Doctor的”出生地”添加一个城市：<br><code>Doctor.birthPlaces.push(&#39;厦门&#39;);</code><br>发生了什么事？Chinese的”出生地”也被改掉了！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(Doctor.birthPlaces); //北京, 上海, 香港, 厦门</div><div class="line">alert(Chinese.birthPlaces); //北京, 上海, 香港, 厦门</div></pre></td></tr></table></figure></p>
-<p>所以，extendCopy()只是拷贝基本类型的数据，我们把这种拷贝叫做”浅拷贝”。这是早期jQuery实现继承的方式。</p>
-<h4 id="四、深拷贝"><a href="#四、深拷贝" class="headerlink" title="四、深拷贝"></a>四、深拷贝</h4><p>所谓”深拷贝”，就是能够实现真正意义上的数组和对象的拷贝。它的实现并不难，只要递归调用”浅拷贝”就行了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function deepCopy(p,c)&#123;</div><div class="line">	var c=c||&#123;&#125;;</div><div class="line">	for(var i in p)&#123;</div><div class="line">		if(typeof p[i]===&apos;object&apos;)&#123;</div><div class="line">			c[i]=(p[i].constructor===Array)?[]:&#123;&#125;;</div><div class="line">			deepCopy(p[i],c[i]);</div><div class="line">		&#125;else&#123;</div><div class="line">			c[i]=p[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用的时候这样写：<br><code>var Doctor = deepCopy(Chinese);</code><br>现在，给父对象加一个属性，值为数组。然后，在子对象上修改这个属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Chinese.birthPlaces = [&apos;北京&apos;,&apos;上海&apos;,&apos;香港&apos;];</div><div class="line">Doctor.birthPlaces.push(&apos;厦门&apos;);</div></pre></td></tr></table></figure></p>
-<p>这时，父对象就不会受到影响了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(Doctor.birthPlaces); //北京, 上海, 香港, 厦门</div><div class="line">alert(Chinese.birthPlaces); //北京, 上海, 香港</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/函数的继承/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+      <header class="article-header">
+        
   
-    <article id="post-构造函数的继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/21/javascript/封装/">封装</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/21/javascript/封装/" class="archive-article-date">
+  	<time datetime="2017-02-21T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Javascript面向对象编程（二）：构造函数的继承"><a href="#Javascript面向对象编程（二）：构造函数的继承" class="headerlink" title="Javascript面向对象编程（二）：构造函数的继承"></a>Javascript面向对象编程（二）：构造函数的继承</h3><p>这个系列的第一部分，主要介绍了如何”封装”数据和方法，以及如何从原型对象生成实例。<br>今天要介绍的是，对象之间的”继承”的五种方法。<br>比如，现在有一个”动物”对象的构造函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function Animal()&#123;</div><div class="line">　　　　this.species = &quot;动物&quot;;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
-<p>还有一个”猫”对象的构造函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Cat(name,color)&#123;</div><div class="line">　　　　this.name = name;</div><div class="line">　　　　this.color = color;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
-<p>怎样才能使”猫”继承”动物”呢？</p>
-<h4 id="一、-构造函数绑定"><a href="#一、-构造函数绑定" class="headerlink" title="一、 构造函数绑定"></a>一、 构造函数绑定</h4><p>第一种方法也是最简单的方法，使用call或apply方法，将父对象的构造函数绑定在子对象上，即在子对象构造函数中加一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Cat(name,color)&#123;</div><div class="line">	Animal.apply(this,arguments);</div><div class="line">	this.name=name;</div><div class="line">	this.color=color;</div><div class="line">&#125;</div><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">alert(cat1.species);</div></pre></td></tr></table></figure></p>
-<p>二、 prototype模式<br>第二种方法更常见，使用prototype属性。<br>如果”猫”的prototype对象，指向一个Animal的实例，那么所有”猫”的实例，就能继承Animal了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Cat.prototype=new Animal();</div><div class="line">Cat.prototype.constructor=Cat;</div><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">alert(cat1.species);</div></pre></td></tr></table></figure></p>
-<p>代码的第一行，我们将Cat的prototype对象指向一个Animal的实例。<br><code>Cat.prototype = new Animal();</code><br>它相当于完全删除了prototype 对象原先的值，然后赋予一个新值。但是，第二行又是什么意思呢？<br><code>Cat.prototype.constructor = Cat;</code><br>原来，任何一个prototype对象都有一个constructor属性，指向它的构造函数。如果没有”Cat.prototype = new Animal();”这一行，Cat.prototype.constructor是指向Cat的；加了这一行以后，Cat.prototype.constructor指向Animal。<br><code>alert(Cat.prototype.constructor == Animal); //true</code><br>更重要的是，每一个实例也有一个constructor属性，默认调用prototype对象的constructor属性。<br><code>alert(cat1.constructor == Cat.prototype.constructor); // true</code><br>因此，在运行”Cat.prototype = new Animal();”这一行之后，cat1.constructor也指向Animal！<br><code>alert(cat1.constructor == Animal); // true</code><br>这显然会导致继承链的紊乱（cat1明明是用构造函数Cat生成的），因此我们必须手动纠正，将Cat.prototype对象的constructor值改为Cat。这就是第二行的意思。<br>这是很重要的一点，编程时务必要遵守。下文都遵循这一点，即如果替换了prototype对象，<br><code>o.prototype = {};</code><br>那么，下一步必然是为新的prototype对象加上constructor属性，并将这个属性指回原来的构造函数。<br><code>o.prototype.constructor = o;</code></p>
-<h5 id="三、-直接继承prototype"><a href="#三、-直接继承prototype" class="headerlink" title="三、 直接继承prototype"></a>三、 直接继承prototype</h5><p>第三种方法是对第二种方法的改进。由于Animal对象中，不变的属性都可以直接写入Animal.prototype。所以，我们也可以让Cat()跳过 Animal()，直接继承Animal.prototype。</p>
-<p>现在，我们先将Animal对象改写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function Animal()&#123; &#125;</div><div class="line">Animal.prototype.species = &quot;动物&quot;;</div></pre></td></tr></table></figure></p>
-<p>然后，将Cat的prototype对象，然后指向Animal的prototype对象，这样就完成了继承。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Cat.prototype=Animal.prototype;</div><div class="line">Cat.prototype.constructor=Cat;</div><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">alert(cat1.species);</div></pre></td></tr></table></figure></p>
-<p>与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例了），比较省内存。缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反映到Animal.prototype。<br>所以，上面这一段代码其实是有问题的。请看第二行<br><code>Cat.prototype.constructor = Cat;</code><br>这一句实际上把Animal.prototype对象的constructor属性也改掉了！<br><code>alert(Animal.prototype.constructor); // Cat</code></p>
-<h4 id="四、-利用空对象作为中介"><a href="#四、-利用空对象作为中介" class="headerlink" title="四、 利用空对象作为中介"></a>四、 利用空对象作为中介</h4><p>由于”直接继承prototype”存在上述的缺点，所以就有第四种方法，利用一个空对象作为中介。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var F=function()&#123;&#125;;</div><div class="line">F.prototype=Animal.prototype;</div><div class="line">Cat.prototype=new F();</div><div class="line">Cat.prototype.constructor=Cat;</div></pre></td></tr></table></figure></p>
-<p>F是空对象，所以几乎不占内存。这时，修改Cat的prototype对象，就不会影响到Animal的prototype对象。<br><code>alert(Animal.prototype.constructor); // Animal</code><br>我们将上面的方法，封装成一个函数，便于使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function extend(Child,Parent)&#123;</div><div class="line">	F.prototype=Parent.prototype;</div><div class="line">	Child.prototype=new F();</div><div class="line">	Child.prototype.constructor=Child;</div><div class="line">	Child.uber=Parent.prototype;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用的时候，方法如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">extend(Cat,Animal);</div><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">alert(cat1.species);</div></pre></td></tr></table></figure></p>
-<p>这个extend函数，就是YUI库如何实现继承的方法。<br>另外，说明一点，函数体最后一行<br><code>Child.uber = Parent.prototype;</code><br>意思是为子对象设一个uber属性，这个属性直接指向父对象的prototype属性。（uber是一个德语词，意思是”向上”、”上一层”。）这等于在子对象上打开一条通道，可以直接调用父对象的方法。这一行放在这里，只是为了实现继承的完备性，纯属备用性质。</p>
-<h4 id="五、-拷贝继承"><a href="#五、-拷贝继承" class="headerlink" title="五、 拷贝继承"></a>五、 拷贝继承</h4><p>上面是采用prototype对象，实现继承。我们也可以换一种思路，纯粹采用”拷贝”方法实现继承。简单说，如果把父对象的所有属性和方法，拷贝进子对象，不也能够实现继承吗？这样我们就有了第五种方法。<br>首先，还是把Animal的所有不变属性，都放到它的prototype对象上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function Animal()&#123;</div><div class="line">	Animal.prototype.species=&quot;animal&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后，再写一个函数，实现属性拷贝的目的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function extend2(Child,Parent)&#123;</div><div class="line">	var p=Parent.prototype;</div><div class="line">	var c=Child.prototype;</div><div class="line">	for(var i in p)&#123;</div><div class="line">		c[i]=p[i];</div><div class="line">	&#125;</div><div class="line">	c.uber=p;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这个函数的作用，就是将父对象的prototype对象中的属性，一一拷贝给Child对象的prototype对象。<br>使用的时候，这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">extend2(Cat,Animal)&#123;</div><div class="line">	var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">	alert(cat1.species);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+        <h3 id="Javascript-面向对象编程（一）：封装"><a href="#Javascript-面向对象编程（一）：封装" class="headerlink" title="Javascript 面向对象编程（一）：封装"></a>Javascript 面向对象编程（一）：封装</h3><p>Javascript是一种基于对象（object-based）的语言，你遇到的所有东西几乎都是对象。但是，它又不是一种真正的面向对象编程（OOP）语言，因为它的语法中没有class（类）。<br>那么，如果我们要把”属性”（property）和”方法”（method），封装成一个对象，甚至要从原型对象生成一个实例对象，我们应该怎么做呢？</p>
+        
+          <a class="article-more-a" href="/2017/02/21/javascript/封装/#more">more >></a>
+        
       
 
       
@@ -407,11 +577,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/27/构造函数的继承/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/21/javascript/封装/">展开全文 >></a>
         </p>
       
 
@@ -479,133 +660,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/12/22/git常用命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-大道至简：Angular2只有一个核心概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。</p>
-<pre><code>从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
-
-所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。
-
-接下来罗列一下Angular2与之前的1.x相比带来的核心改变。
-
-第一点：Angular2删掉了$scope的概念。
-
-在ng1.x里面，$scope是一个相当强大又相当可怕的东西，一言不合就让开发者自己$apply。ng2响应社区的强烈吐槽，删除（或者说隐藏）了$scope这个东西，开发者不再需要感知到它的存在，另外，由于ng2引入了zone.js，所以即使在各种回调函数中修改数据模型也不需要手动$apply()了。
-
-这一点说明了群众们吐槽的力量还是相当强大的！
-
-第二点：删掉了ng-controller指令。
-
-Controller终于和Component合体了，小僧想说的是，人家Backbone早就这么做了，你们一开始只顾着自己挖坑，也不看看友军的战法，还好浪子回头为时不晚。
-
-第三点：大幅度演进了脏值检测机制。
-
-大家都知道，”双向数据绑定“之所以能工作，都是因为底层有”脏值检测“这么一个神奇的东西。而实际上ng1.x里面的脏值检测机制的运行效率是非常差的，这就是为什么大家一直在吐槽绑定的对象不能太多、太深的原因。
-
-那么，在ng2中，大幅度演进了这一机制，不仅引入了单向绑定，还引入了各种绑定策略，例如：只检测一次、利用JIT动态生成脏值检测代码等等。毫无疑问，有了这些工具之后，数据绑定效率不再是问题。
-
-第四点：嵌套路由问题。
-
-大家都知道，在ng1.x里面有一个非常讨厌的问题，官方的路由机制是不能嵌套的，这就导致大家在开发的过程中不得不依赖于第三方的ui-router库。ng2中没有这个问题了，因为ng2的路由是基于Component的，天然就支持嵌套。
-
-第五点：依赖注入机制改造。
-
-ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开发团队里面混入了Java大神。如果你熟悉Spring那一套注解的用法，那么写ng2的组件几乎没有学习成本。
-
-第六点：框架整体上基于TypeScript开发。
-
-这是最大的一个变更，但是大家不用害怕，因为你只要记住我一句话就再也没有顾虑了：TypeScript和ActionScript3一样，不过是变态版的Java而已。
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/15/大道至简：Angular2只有一个核心概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-$scope.watch的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/30/$scope.watch的用法/">$scope.watch的用法</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/30/$scope.watch的用法/" class="archive-article-date">
-  	<time datetime="2016-11-30T05:21:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>####$watch简介<br>在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。<br>AngularJS内部的watch实现了页面随model的及时更新。<br>$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。   </p>
-</li>
-<li><p>####watch方法用法<br>$watch(watchFn,watchAction,deepWatch)<br>watchFn:angular表达式或函数的字符串<br>watchAction(newValue,oldValue,scope):watchFn发生变化会被调用<br>deepWatch：可选的布尔值命令检查被监控的对象的每个属性是否发生变化<br>$watch会返回一个函数，想要注销这个watch可以使用函数    </p>
-</li>
-<li><p>####例子<br>在前面的例子中，当name的表单改变30次，然后触发某个事件。<br>控制器代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var firstController = <span class="keyword">function</span> (<span class="variable">$scope</span>)&#123;</div><div class="line">    <span class="variable">$scope</span>.name=<span class="string">'张三'</span>;</div><div class="line">    <span class="variable">$scope</span>.count=0;</div><div class="line">    // 监听一个model 当一个model每次改变时 都会触发第2个函数  </div><div class="line"><span class="variable">$scope</span>.<span class="variable">$watch</span>(<span class="string">'name'</span>,<span class="keyword">function</span>(newValue,oldValue)&#123;</div><div class="line">        ++<span class="variable">$scope</span>.count;</div><div class="line">        <span class="keyword">if</span>(<span class="variable">$scope</span>.count &gt; 30)&#123;</div><div class="line">            <span class="variable">$scope</span>.name = <span class="string">'已经大于30次了'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>html代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">""</span>&gt;</span></div><div class="line"> </div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"firstController"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">ng-model</span>=<span class="string">"name"</span>/&gt;</span></div><div class="line"> </div><div class="line">            改变次数:&#123;&#123;count&#125;&#125;-&#123;&#123;name&#125;&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"app/index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"../../vendor/angular/angularjs.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<ol>
-<li>####watch的第三个参数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$scope.data = &#123;</div><div class="line">       <span class="attr">name</span> :<span class="string">'李四'</span>,</div><div class="line">       <span class="attr">count</span>:<span class="number">20</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line"> $scope.$watch(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">   &#125;,<span class="literal">true</span>)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/30/$scope.watch的用法/">展开全文 >></a>
         </p>
       
 
@@ -868,15 +922,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
               </li>
              
               <li class="article-tag-list-item">

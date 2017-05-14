@@ -6,18 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
-  <title>$scope.watch的用法 | PSweet</title>
+  <title>Archives: 2017/4 | PSweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####$watch简介在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。AngularJS内部的watch实现了页面随model的及时更新。$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。     ####watch方法用法$watch(watchFn,watchAction,deepWatch)watchFn:angu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="$scope.watch的用法">
-<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/11/30/$scope.watch的用法/index.html">
+  <meta name="description" content="不模仿现实  但构建真实">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PSweet">
+<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/archives/2017/04/index.html">
 <meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="####$watch简介在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。AngularJS内部的watch实现了页面随model的及时更新。$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。     ####watch方法用法$watch(watchFn,watchAction,deepWatch)watchFn:angu">
-<meta property="og:updated_time" content="2016-11-30T05:21:26.000Z">
+<meta property="og:description" content="不模仿现实  但构建真实">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="$scope.watch的用法">
-<meta name="twitter:description" content="####$watch简介在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。AngularJS内部的watch实现了页面随model的及时更新。$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。     ####watch方法用法$watch(watchFn,watchAction,deepWatch)watchFn:angu">
+<meta name="twitter:title" content="PSweet">
+<meta name="twitter:description" content="不模仿现实  但构建真实">
   
     <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
   
@@ -145,161 +144,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-$scope.watch的用法" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      $scope.watch的用法
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/04/22/javascript/Angular2核心概念/" class="archive-article-date">
+  	<time datetime="2017-04-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/04/22/javascript/Angular2核心概念/">Angular2 核心概念</a>
     </h1>
   
 
-        
-        <a href="/2016/11/30/$scope.watch的用法/" class="archive-article-date">
-  	<time datetime="2016-11-30T05:21:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>####$watch简介<br>在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。<br>AngularJS内部的watch实现了页面随model的及时更新。<br>$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。   </p>
-</li>
-<li><p>####watch方法用法<br>$watch(watchFn,watchAction,deepWatch)<br>watchFn:angular表达式或函数的字符串<br>watchAction(newValue,oldValue,scope):watchFn发生变化会被调用<br>deepWatch：可选的布尔值命令检查被监控的对象的每个属性是否发生变化<br>$watch会返回一个函数，想要注销这个watch可以使用函数    </p>
-</li>
-<li><p>####例子<br>在前面的例子中，当name的表单改变30次，然后触发某个事件。<br>控制器代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var firstController = <span class="keyword">function</span> (<span class="variable">$scope</span>)&#123;</div><div class="line">    <span class="variable">$scope</span>.name=<span class="string">'张三'</span>;</div><div class="line">    <span class="variable">$scope</span>.count=0;</div><div class="line">    // 监听一个model 当一个model每次改变时 都会触发第2个函数  </div><div class="line"><span class="variable">$scope</span>.<span class="variable">$watch</span>(<span class="string">'name'</span>,<span class="keyword">function</span>(newValue,oldValue)&#123;</div><div class="line">        ++<span class="variable">$scope</span>.count;</div><div class="line">        <span class="keyword">if</span>(<span class="variable">$scope</span>.count &gt; 30)&#123;</div><div class="line">            <span class="variable">$scope</span>.name = <span class="string">'已经大于30次了'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>html代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">""</span>&gt;</span></div><div class="line"> </div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"firstController"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">ng-model</span>=<span class="string">"name"</span>/&gt;</span></div><div class="line"> </div><div class="line">            改变次数:&#123;&#123;count&#125;&#125;-&#123;&#123;name&#125;&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"app/index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"../../vendor/angular/angularjs.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<ol>
-<li>####watch的第三个参数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$scope.data = &#123;</div><div class="line">       <span class="attr">name</span> :<span class="string">'李四'</span>,</div><div class="line">       <span class="attr">count</span>:<span class="number">20</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line"> $scope.$watch(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">   &#125;,<span class="literal">true</span>)</div></pre></td></tr></table></figure>
-</li>
-</ol>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
+          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/mrpsweet/mrpsweet.github.io.git/2016/11/30/$scope.watch的用法/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/12/15/大道至简：Angular2只有一个核心概念/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/11/08/win工具/Windows必备神器Cmder/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Windows必备神器Cmder</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -322,8 +220,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -383,15 +281,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
               </li>
              
               <li class="article-tag-list-item">

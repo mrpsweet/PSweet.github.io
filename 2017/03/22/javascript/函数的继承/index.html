@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
-  <title>PSweet</title>
+  <title>javascript正则表达式 | PSweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Javascript面向对象编程（二）：构造函数的继承这个系列的第一部分，主要介绍了如何”封装”数据和方法，以及如何从原型对象生成实例。今天要介绍的是，对象之间的”继承”的五种方法。比如，现在有一个”动物”对象的构造函数。123function Animal()&amp;#123;　　　　this.species = &amp;quot;动物&amp;quot;;　　&amp;#125; 还有一个”猫”对象的构造函数。1234f">
+  <meta name="description" content="函数的继承这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。今天是最后一个部分，介绍不使用构造函数实现”继承”。">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PSweet">
-<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/27/构造函数的继承/index.html">
+<meta property="og:title" content="javascript正则表达式">
+<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2017/03/22/javascript/函数的继承/index.html">
 <meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="Javascript面向对象编程（二）：构造函数的继承这个系列的第一部分，主要介绍了如何”封装”数据和方法，以及如何从原型对象生成实例。今天要介绍的是，对象之间的”继承”的五种方法。比如，现在有一个”动物”对象的构造函数。123function Animal()&amp;#123;　　　　this.species = &amp;quot;动物&amp;quot;;　　&amp;#125; 还有一个”猫”对象的构造函数。1234f">
-<meta property="og:updated_time" content="2016-12-27T08:39:52.000Z">
+<meta property="og:description" content="函数的继承这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。今天是最后一个部分，介绍不使用构造函数实现”继承”。">
+<meta property="og:updated_time" content="2017-05-14T02:41:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PSweet">
-<meta name="twitter:description" content="Javascript面向对象编程（二）：构造函数的继承这个系列的第一部分，主要介绍了如何”封装”数据和方法，以及如何从原型对象生成实例。今天要介绍的是，对象之间的”继承”的五种方法。比如，现在有一个”动物”对象的构造函数。123function Animal()&amp;#123;　　　　this.species = &amp;quot;动物&amp;quot;;　　&amp;#125; 还有一个”猫”对象的构造函数。1234f">
+<meta name="twitter:title" content="javascript正则表达式">
+<meta name="twitter:description" content="函数的继承这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。今天是最后一个部分，介绍不使用构造函数实现”继承”。">
   
     <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
   
@@ -145,28 +146,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-构造函数的继承" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-javascript/函数的继承" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript正则表达式
+    </h1>
+  
+
+        
+        <a href="/2017/03/22/javascript/函数的继承/" class="archive-article-date">
+  	<time datetime="2017-03-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Javascript面向对象编程（二）：构造函数的继承"><a href="#Javascript面向对象编程（二）：构造函数的继承" class="headerlink" title="Javascript面向对象编程（二）：构造函数的继承"></a>Javascript面向对象编程（二）：构造函数的继承</h3><p>这个系列的第一部分，主要介绍了如何”封装”数据和方法，以及如何从原型对象生成实例。<br>今天要介绍的是，对象之间的”继承”的五种方法。<br>比如，现在有一个”动物”对象的构造函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function Animal()&#123;</div><div class="line">　　　　this.species = &quot;动物&quot;;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
-<p>还有一个”猫”对象的构造函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Cat(name,color)&#123;</div><div class="line">　　　　this.name = name;</div><div class="line">　　　　this.color = color;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
-<p>怎样才能使”猫”继承”动物”呢？</p>
-<h4 id="一、-构造函数绑定"><a href="#一、-构造函数绑定" class="headerlink" title="一、 构造函数绑定"></a>一、 构造函数绑定</h4><p>第一种方法也是最简单的方法，使用call或apply方法，将父对象的构造函数绑定在子对象上，即在子对象构造函数中加一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Cat(name,color)&#123;</div><div class="line">	Animal.apply(this,arguments);</div><div class="line">	this.name=name;</div><div class="line">	this.color=color;</div><div class="line">&#125;</div><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">alert(cat1.species);</div></pre></td></tr></table></figure></p>
-<p>二、 prototype模式<br>第二种方法更常见，使用prototype属性。<br>如果”猫”的prototype对象，指向一个Animal的实例，那么所有”猫”的实例，就能继承Animal了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Cat.prototype=new Animal();</div><div class="line">Cat.prototype.constructor=Cat;</div><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">alert(cat1.species);</div></pre></td></tr></table></figure></p>
-<p>代码的第一行，我们将Cat的prototype对象指向一个Animal的实例。<br><code>Cat.prototype = new Animal();</code><br>它相当于完全删除了prototype 对象原先的值，然后赋予一个新值。但是，第二行又是什么意思呢？<br><code>Cat.prototype.constructor = Cat;</code><br>原来，任何一个prototype对象都有一个constructor属性，指向它的构造函数。如果没有”Cat.prototype = new Animal();”这一行，Cat.prototype.constructor是指向Cat的；加了这一行以后，Cat.prototype.constructor指向Animal。<br><code>alert(Cat.prototype.constructor == Animal); //true</code><br>更重要的是，每一个实例也有一个constructor属性，默认调用prototype对象的constructor属性。<br><code>alert(cat1.constructor == Cat.prototype.constructor); // true</code><br>因此，在运行”Cat.prototype = new Animal();”这一行之后，cat1.constructor也指向Animal！<br><code>alert(cat1.constructor == Animal); // true</code><br>这显然会导致继承链的紊乱（cat1明明是用构造函数Cat生成的），因此我们必须手动纠正，将Cat.prototype对象的constructor值改为Cat。这就是第二行的意思。<br>这是很重要的一点，编程时务必要遵守。下文都遵循这一点，即如果替换了prototype对象，<br><code>o.prototype = {};</code><br>那么，下一步必然是为新的prototype对象加上constructor属性，并将这个属性指回原来的构造函数。<br><code>o.prototype.constructor = o;</code></p>
-<h5 id="三、-直接继承prototype"><a href="#三、-直接继承prototype" class="headerlink" title="三、 直接继承prototype"></a>三、 直接继承prototype</h5><p>第三种方法是对第二种方法的改进。由于Animal对象中，不变的属性都可以直接写入Animal.prototype。所以，我们也可以让Cat()跳过 Animal()，直接继承Animal.prototype。</p>
-<p>现在，我们先将Animal对象改写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function Animal()&#123; &#125;</div><div class="line">Animal.prototype.species = &quot;动物&quot;;</div></pre></td></tr></table></figure></p>
-<p>然后，将Cat的prototype对象，然后指向Animal的prototype对象，这样就完成了继承。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Cat.prototype=Animal.prototype;</div><div class="line">Cat.prototype.constructor=Cat;</div><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">alert(cat1.species);</div></pre></td></tr></table></figure></p>
-<p>与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例了），比较省内存。缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反映到Animal.prototype。<br>所以，上面这一段代码其实是有问题的。请看第二行<br><code>Cat.prototype.constructor = Cat;</code><br>这一句实际上把Animal.prototype对象的constructor属性也改掉了！<br><code>alert(Animal.prototype.constructor); // Cat</code></p>
-<h4 id="四、-利用空对象作为中介"><a href="#四、-利用空对象作为中介" class="headerlink" title="四、 利用空对象作为中介"></a>四、 利用空对象作为中介</h4><p>由于”直接继承prototype”存在上述的缺点，所以就有第四种方法，利用一个空对象作为中介。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var F=function()&#123;&#125;;</div><div class="line">F.prototype=Animal.prototype;</div><div class="line">Cat.prototype=new F();</div><div class="line">Cat.prototype.constructor=Cat;</div></pre></td></tr></table></figure></p>
-<p>F是空对象，所以几乎不占内存。这时，修改Cat的prototype对象，就不会影响到Animal的prototype对象。<br><code>alert(Animal.prototype.constructor); // Animal</code><br>我们将上面的方法，封装成一个函数，便于使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function extend(Child,Parent)&#123;</div><div class="line">	F.prototype=Parent.prototype;</div><div class="line">	Child.prototype=new F();</div><div class="line">	Child.prototype.constructor=Child;</div><div class="line">	Child.uber=Parent.prototype;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用的时候，方法如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">extend(Cat,Animal);</div><div class="line">var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">alert(cat1.species);</div></pre></td></tr></table></figure></p>
-<p>这个extend函数，就是YUI库如何实现继承的方法。<br>另外，说明一点，函数体最后一行<br><code>Child.uber = Parent.prototype;</code><br>意思是为子对象设一个uber属性，这个属性直接指向父对象的prototype属性。（uber是一个德语词，意思是”向上”、”上一层”。）这等于在子对象上打开一条通道，可以直接调用父对象的方法。这一行放在这里，只是为了实现继承的完备性，纯属备用性质。</p>
-<h4 id="五、-拷贝继承"><a href="#五、-拷贝继承" class="headerlink" title="五、 拷贝继承"></a>五、 拷贝继承</h4><p>上面是采用prototype对象，实现继承。我们也可以换一种思路，纯粹采用”拷贝”方法实现继承。简单说，如果把父对象的所有属性和方法，拷贝进子对象，不也能够实现继承吗？这样我们就有了第五种方法。<br>首先，还是把Animal的所有不变属性，都放到它的prototype对象上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function Animal()&#123;</div><div class="line">	Animal.prototype.species=&quot;animal&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后，再写一个函数，实现属性拷贝的目的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function extend2(Child,Parent)&#123;</div><div class="line">	var p=Parent.prototype;</div><div class="line">	var c=Child.prototype;</div><div class="line">	for(var i in p)&#123;</div><div class="line">		c[i]=p[i];</div><div class="line">	&#125;</div><div class="line">	c.uber=p;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这个函数的作用，就是将父对象的prototype对象中的属性，一一拷贝给Child对象的prototype对象。<br>使用的时候，这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">extend2(Cat,Animal)&#123;</div><div class="line">	var cat1=new Cat(&quot;one&quot;,&quot;two&quot;);</div><div class="line">	alert(cat1.species);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h3 id="函数的继承"><a href="#函数的继承" class="headerlink" title="函数的继承"></a>函数的继承</h3><p>这个系列的第一部分介绍了”封装”，第二部分介绍了使用构造函数实现”继承”。<br>今天是最后一个部分，介绍不使用构造函数实现”继承”。<br><a id="more"></a></p>
+<h4 id="一、什么是”非构造函数”的继承？"><a href="#一、什么是”非构造函数”的继承？" class="headerlink" title="一、什么是”非构造函数”的继承？"></a>一、什么是”非构造函数”的继承？</h4><p>比如，现在有一个对象，叫做”中国人”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Chinese = &#123;</div><div class="line">　　　　nation:&apos;中国&apos;</div><div class="line">　　&#125;;</div></pre></td></tr></table></figure></p>
+<p>还有一个对象，叫做”医生”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Doctor =&#123;</div><div class="line">　　　　career:&apos;医生&apos;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
+<p>请问怎样才能让”医生”去继承”中国人”，也就是说，我怎样才能生成一个”中国医生”的对象？<br>这里要注意，这两个对象都是普通对象，不是构造函数，无法使用构造函数方法实现”继承”。</p>
+<h4 id="二、object-方法"><a href="#二、object-方法" class="headerlink" title="二、object()方法"></a>二、object()方法</h4><p>json格式的发明人Douglas Crockford，提出了一个object()函数，可以做到这一点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function object(o)&#123;</div><div class="line">	function F()&#123;&#125;</div><div class="line">	F.prototype=o;</div><div class="line">	return new F();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个object()函数，其实只做一件事，就是把子对象的prototype属性，指向父对象，从而使得子对象与父对象连在一起。<br>使用的时候，第一步先在父对象的基础上，生成子对象：<br><code>var Doctor=object(Chinese);</code><br>然后，再加上子对象本身的属性：<br><code>Doctor.career = &#39;医生&#39;;</code><br>这时，子对象已经继承了父对象的属性了。<br><code>alert(Doctor.nation); //中国</code></p>
+<h4 id="三、浅拷贝"><a href="#三、浅拷贝" class="headerlink" title="三、浅拷贝"></a>三、浅拷贝</h4><p>除了使用”prototype链”以外，还有另一种思路：把父对象的属性，全部拷贝给子对象，也能实现继承。<br>下面这个函数，就是在做拷贝：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function extendCopy(p)&#123;</div><div class="line">	var c=&#123;&#125;;</div><div class="line">	for(var i in p)&#123;</div><div class="line">		c[i]=p[i];</div><div class="line">	&#125;</div><div class="line">	c.uber=p;</div><div class="line">	return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用的时候，这样写:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var Doctor = extendCopy(Chinese);</div><div class="line">Doctor.career = &apos;医生&apos;;</div><div class="line">alert(Doctor.nation); // 中国</div></pre></td></tr></table></figure></p>
+<p>但是，这样的拷贝有一个问题。那就是，如果父对象的属性等于数组或另一个对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被篡改的可能。<br>请看，现在给Chinese添加一个”出生地”属性，它的值是一个数组。<br><code>Chinese.birthPlaces = [&#39;北京&#39;,&#39;上海&#39;,&#39;香港&#39;];</code><br>通过extendCopy()函数，Doctor继承了Chinese。<br><code>var Doctor=extendCopy(Chinese);</code><br>然后，我们为Doctor的”出生地”添加一个城市：<br><code>Doctor.birthPlaces.push(&#39;厦门&#39;);</code><br>发生了什么事？Chinese的”出生地”也被改掉了！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(Doctor.birthPlaces); //北京, 上海, 香港, 厦门</div><div class="line">alert(Chinese.birthPlaces); //北京, 上海, 香港, 厦门</div></pre></td></tr></table></figure></p>
+<p>所以，extendCopy()只是拷贝基本类型的数据，我们把这种拷贝叫做”浅拷贝”。这是早期jQuery实现继承的方式。</p>
+<h4 id="四、深拷贝"><a href="#四、深拷贝" class="headerlink" title="四、深拷贝"></a>四、深拷贝</h4><p>所谓”深拷贝”，就是能够实现真正意义上的数组和对象的拷贝。它的实现并不难，只要递归调用”浅拷贝”就行了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function deepCopy(p,c)&#123;</div><div class="line">	var c=c||&#123;&#125;;</div><div class="line">	for(var i in p)&#123;</div><div class="line">		if(typeof p[i]===&apos;object&apos;)&#123;</div><div class="line">			c[i]=(p[i].constructor===Array)?[]:&#123;&#125;;</div><div class="line">			deepCopy(p[i],c[i]);</div><div class="line">		&#125;else&#123;</div><div class="line">			c[i]=p[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用的时候这样写：<br><code>var Doctor = deepCopy(Chinese);</code><br>现在，给父对象加一个属性，值为数组。然后，在子对象上修改这个属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Chinese.birthPlaces = [&apos;北京&apos;,&apos;上海&apos;,&apos;香港&apos;];</div><div class="line">Doctor.birthPlaces.push(&apos;厦门&apos;);</div></pre></td></tr></table></figure></p>
+<p>这时，父对象就不会受到影响了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(Doctor.birthPlaces); //北京, 上海, 香港, 厦门</div><div class="line">alert(Chinese.birthPlaces); //北京, 上海, 香港</div></pre></td></tr></table></figure></p>
 
       
 
@@ -196,6 +208,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -246,7 +269,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/27/构造函数的继承/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/mrpsweet/mrpsweet.github.io.git/2017/03/22/javascript/函数的继承/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -260,18 +283,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/12/27/函数的继承/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/23/javascript/构造函数的继承/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          构造函数的继承
         
       </div>
     </a>
   
   
-    <a href="/2016/12/22/git常用命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">git 常用命令</div>
+    <a href="/2017/02/22/javascript/学习Javascript闭包/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习Javascript闭包（Closure）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -371,15 +394,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
               </li>
              
               <li class="article-tag-list-item">

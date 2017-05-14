@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
-  <title>PSweet</title>
+  <title>$scope.watch的用法 | PSweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。 从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。  所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
+  <meta name="description" content="$watch简介在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。AngularJS内部的watch实现了页面随model的及时更新。$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PSweet">
-<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/15/大道至简：Angular2只有一个核心概念/index.html">
+<meta property="og:title" content="$scope.watch的用法">
+<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/21/javascript/$scope.watch的用法/index.html">
 <meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。 从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。  所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
-<meta property="og:updated_time" content="2016-12-15T02:02:44.000Z">
+<meta property="og:description" content="$watch简介在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。AngularJS内部的watch实现了页面随model的及时更新。$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。">
+<meta property="og:updated_time" content="2017-05-14T02:48:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PSweet">
-<meta name="twitter:description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。 从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。  所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
+<meta name="twitter:title" content="$scope.watch的用法">
+<meta name="twitter:description" content="$watch简介在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。AngularJS内部的watch实现了页面随model的及时更新。$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。">
   
     <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
   
@@ -145,46 +146,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-大道至简：Angular2只有一个核心概念" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-javascript/$scope.watch的用法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      $scope.watch的用法
+    </h1>
+  
+
+        
+        <a href="/2017/02/21/javascript/$scope.watch的用法/" class="archive-article-date">
+  	<time datetime="2017-02-21T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。</p>
-<pre><code>从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
+        <h4 id="watch简介"><a href="#watch简介" class="headerlink" title="$watch简介"></a>$watch简介</h4><p>在digest执行时，如果watch观察的的value与上一次执行时不一样时，就会被触发。<br>AngularJS内部的watch实现了页面随model的及时更新。<br>$watch方法在用的时候主要是手动的监听一个对象，但对象发生变化时触发某个事件。   </p>
+<a id="more"></a>
+<h4 id="watch方法用法"><a href="#watch方法用法" class="headerlink" title="watch方法用法"></a>watch方法用法</h4><p>$watch(watchFn,watchAction,deepWatch)<br>watchFn:angular表达式或函数的字符串<br>watchAction(newValue,oldValue,scope):watchFn发生变化会被调用<br>deepWatch：可选的布尔值命令检查被监控的对象的每个属性是否发生变化<br>$watch会返回一个函数，想要注销这个watch可以使用函数    </p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>在前面的例子中，当name的表单改变30次，然后触发某个事件。<br>控制器代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var firstController = <span class="keyword">function</span> (<span class="variable">$scope</span>)&#123;</div><div class="line">    <span class="variable">$scope</span>.name=<span class="string">'张三'</span>;</div><div class="line">    <span class="variable">$scope</span>.count=0;</div><div class="line">    // 监听一个model 当一个model每次改变时 都会触发第2个函数  </div><div class="line"><span class="variable">$scope</span>.<span class="variable">$watch</span>(<span class="string">'name'</span>,<span class="keyword">function</span>(newValue,oldValue)&#123;</div><div class="line">        ++<span class="variable">$scope</span>.count;</div><div class="line">        <span class="keyword">if</span>(<span class="variable">$scope</span>.count &gt; 30)&#123;</div><div class="line">            <span class="variable">$scope</span>.name = <span class="string">'已经大于30次了'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>html代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">""</span>&gt;</span></div><div class="line"> </div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"firstController"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">ng-model</span>=<span class="string">"name"</span>/&gt;</span></div><div class="line"> </div><div class="line">            改变次数:&#123;&#123;count&#125;&#125;-&#123;&#123;name&#125;&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"app/index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"../../vendor/angular/angularjs.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="watch的第三个参数"><a href="#watch的第三个参数" class="headerlink" title="watch的第三个参数"></a>watch的第三个参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$scope.data = &#123;</div><div class="line">       <span class="attr">name</span> :<span class="string">'李四'</span>,</div><div class="line">       <span class="attr">count</span>:<span class="number">20</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line"> $scope.$watch(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">   &#125;,<span class="literal">true</span>)</div></pre></td></tr></table></figure>
 
-所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。
-
-接下来罗列一下Angular2与之前的1.x相比带来的核心改变。
-
-第一点：Angular2删掉了$scope的概念。
-
-在ng1.x里面，$scope是一个相当强大又相当可怕的东西，一言不合就让开发者自己$apply。ng2响应社区的强烈吐槽，删除（或者说隐藏）了$scope这个东西，开发者不再需要感知到它的存在，另外，由于ng2引入了zone.js，所以即使在各种回调函数中修改数据模型也不需要手动$apply()了。
-
-这一点说明了群众们吐槽的力量还是相当强大的！
-
-第二点：删掉了ng-controller指令。
-
-Controller终于和Component合体了，小僧想说的是，人家Backbone早就这么做了，你们一开始只顾着自己挖坑，也不看看友军的战法，还好浪子回头为时不晚。
-
-第三点：大幅度演进了脏值检测机制。
-
-大家都知道，”双向数据绑定“之所以能工作，都是因为底层有”脏值检测“这么一个神奇的东西。而实际上ng1.x里面的脏值检测机制的运行效率是非常差的，这就是为什么大家一直在吐槽绑定的对象不能太多、太深的原因。
-
-那么，在ng2中，大幅度演进了这一机制，不仅引入了单向绑定，还引入了各种绑定策略，例如：只检测一次、利用JIT动态生成脏值检测代码等等。毫无疑问，有了这些工具之后，数据绑定效率不再是问题。
-
-第四点：嵌套路由问题。
-
-大家都知道，在ng1.x里面有一个非常讨厌的问题，官方的路由机制是不能嵌套的，这就导致大家在开发的过程中不得不依赖于第三方的ui-router库。ng2中没有这个问题了，因为ng2的路由是基于Component的，天然就支持嵌套。
-
-第五点：依赖注入机制改造。
-
-ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开发团队里面混入了Java大神。如果你熟悉Spring那一套注解的用法，那么写ng2的组件几乎没有学习成本。
-
-第六点：框架整体上基于TypeScript开发。
-
-这是最大的一个变更，但是大家不用害怕，因为你只要记住我一句话就再也没有顾虑了：TypeScript和ActionScript3一样，不过是变态版的Java而已。
-</code></pre>
       
 
       
@@ -213,6 +201,17 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -263,7 +262,7 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/mrpsweet/mrpsweet.github.io.git/2016/12/15/大道至简：Angular2只有一个核心概念/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/mrpsweet/mrpsweet.github.io.git/2017/02/21/javascript/$scope.watch的用法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,18 +276,18 @@ ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开�
   
 <nav id="article-nav">
   
-    <a href="/2016/12/22/git常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/22/javascript/Javascript的正则表达式/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          git 常用命令
+          javascript正则表达式
         
       </div>
     </a>
   
   
-    <a href="/2016/11/30/$scope.watch的用法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">$scope.watch的用法</div>
+    <a href="/2017/02/21/javascript/封装/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">封装</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -388,15 +387,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
               </li>
              
               <li class="article-tag-list-item">

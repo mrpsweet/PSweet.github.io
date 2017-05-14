@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
-  <title>Archives: 2016 | PSweet</title>
+  <title>Angular2 核心概念 | PSweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="不模仿现实  但构建真实">
-<meta property="og:type" content="website">
-<meta property="og:title" content="PSweet">
-<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/archives/2016/page/2/index.html">
+  <meta name="description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。 从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。  所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular2 核心概念">
+<meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2017/04/22/javascript/Angular2核心概念/index.html">
 <meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="不模仿现实  但构建真实">
+<meta property="og:description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。 从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。  所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
+<meta property="og:updated_time" content="2017-05-14T02:45:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PSweet">
-<meta name="twitter:description" content="不模仿现实  但构建真实">
+<meta name="twitter:title" content="Angular2 核心概念">
+<meta name="twitter:description" content="整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。 从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。  所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。">
   
     <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
   
@@ -144,90 +146,182 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-javascript/Angular2核心概念" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/09/22/win工具/Tile Style/" class="archive-article-date">
-  	<time datetime="2016-09-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/22/win工具/Tile Style/">Tile Style</a>
+    <h1 class="article-title" itemprop="name">
+      Angular2 核心概念
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/04/22/javascript/Angular2核心概念/" class="archive-article-date">
+  	<time datetime="2017-04-22T01:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 整体上来说，Angular2变得更加简洁，最核心的概念只剩下一个，那就是组件Component，其它所有的一切都是围绕着Component展开的。</p>
+<pre><code>从这一点来看，Angular2无疑是受到了React的强力影响，毕竟React的核心概念也只有一个，也是Component。
+
+所以，在使用ng2的时候，大家只要会写Component就行了，其它那些什么服务啊、路由啊、管道啊，都是些小工具而已。
+
+接下来罗列一下Angular2与之前的1.x相比带来的核心改变。
+
+第一点：Angular2删掉了$scope的概念。
+
+在ng1.x里面，$scope是一个相当强大又相当可怕的东西，一言不合就让开发者自己$apply。ng2响应社区的强烈吐槽，删除（或者说隐藏）了$scope这个东西，开发者不再需要感知到它的存在，另外，由于ng2引入了zone.js，所以即使在各种回调函数中修改数据模型也不需要手动$apply()了。
+
+这一点说明了群众们吐槽的力量还是相当强大的！
+
+第二点：删掉了ng-controller指令。
+
+Controller终于和Component合体了，小僧想说的是，人家Backbone早就这么做了，你们一开始只顾着自己挖坑，也不看看友军的战法，还好浪子回头为时不晚。
+
+第三点：大幅度演进了脏值检测机制。
+
+大家都知道，”双向数据绑定“之所以能工作，都是因为底层有”脏值检测“这么一个神奇的东西。而实际上ng1.x里面的脏值检测机制的运行效率是非常差的，这就是为什么大家一直在吐槽绑定的对象不能太多、太深的原因。
+
+那么，在ng2中，大幅度演进了这一机制，不仅引入了单向绑定，还引入了各种绑定策略，例如：只检测一次、利用JIT动态生成脏值检测代码等等。毫无疑问，有了这些工具之后，数据绑定效率不再是问题。
+
+第四点：嵌套路由问题。
+
+大家都知道，在ng1.x里面有一个非常讨厌的问题，官方的路由机制是不能嵌套的，这就导致大家在开发的过程中不得不依赖于第三方的ui-router库。ng2中没有这个问题了，因为ng2的路由是基于Component的，天然就支持嵌套。
+
+第五点：依赖注入机制改造。
+
+ng2里面的依赖注入简直和Java中的注解一毛一样，估计核心开发团队里面混入了Java大神。如果你熟悉Spring那一套注解的用法，那么写ng2的组件几乎没有学习成本。
+
+第六点：框架整体上基于TypeScript开发。
+
+这是最大的一个变更，但是大家不用害怕，因为你只要记住我一句话就再也没有顾虑了：TypeScript和ActionScript3一样，不过是变态版的Java而已。
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tags</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/mrpsweet/mrpsweet.github.io.git/2017/04/22/javascript/Angular2核心概念/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/30/hello-world/" class="archive-article-date">
-  	<time datetime="2016-05-30T07:27:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-30</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/30/hello-world/">Hello World</a>
-    </h1>
+  
+    <a href="/2017/03/23/javascript/构造函数的继承/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">构造函数的继承</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2016/">&laquo; Prev</a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -251,8 +345,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -312,15 +406,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript、 angular1</a>
               </li>
              
               <li class="article-tag-list-item">
