@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://github.com/mrpsweet/mrpsweet.github.io.git">
   <title>angularjs的传值 | PSweet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####区别如何在作用域之间通信呢？1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。">
+  <meta name="description" content="区别如何在作用域之间通信呢？1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。">
 <meta name="keywords" content="javascript angular1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="angularjs的传值">
 <meta property="og:url" content="https://github.com/mrpsweet/mrpsweet.github.io.git/2016/10/22/angularjs的$on、$emit、$broadcast/index.html">
 <meta property="og:site_name" content="PSweet">
-<meta property="og:description" content="####区别如何在作用域之间通信呢？1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。">
-<meta property="og:updated_time" content="2017-05-14T02:29:11.000Z">
+<meta property="og:description" content="区别如何在作用域之间通信呢？1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。">
+<meta property="og:updated_time" content="2017-05-14T02:31:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angularjs的传值">
-<meta name="twitter:description" content="####区别如何在作用域之间通信呢？1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。">
+<meta name="twitter:description" content="区别如何在作用域之间通信呢？1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。">
   
     <link rel="alternative" href="/atom.xml" title="PSweet" type="application/atom+xml">
   
@@ -166,9 +166,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####区别<br>如何在作用域之间通信呢？<br>1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。<br>2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。<br><a id="more"></a></p>
-<p>3.$on、$emit和$broadcast使得event、data在controller之间的传递变的简单。<br>$emit：子传父  传递event与data<br>$broadcast：父传子 child controller传递event与data<br>$on：监听或接收数据、用于接收event与data。</p>
-<p>$broadcast、$emit事件必须依靠其他事件（ng-click等）进行触发，而不能单纯写一个这个。<br>$on倒是可以直接写，因为它属于监听和接收数据的。</p>
+        <h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>如何在作用域之间通信呢？<br>1.创建一个单例服务，然后通过这个服务处理所有子作用域的通信。<br>2.通过作用域中的事件处理通信。但是这种方法有一些限制；例如，你并不能广泛的将事件传播到所有监控的作用域中。你必须选择是否与父级作用域或者子作用域通信。<br><a id="more"></a></p>
+<p>$on、$emit和$broadcast使得event、data在controller之间的传递变的简单。<br>$emit：子传父  传递event与data<br>$broadcast：父传子 child controller传递event与data<br>$on：监听或接收数据、用于接收event与data。<br>$broadcast、$emit事件必须依靠其他事件（ng-click等）进行触发，而不能单纯写一个这个。<br>$on倒是可以直接写，因为它属于监听和接收数据的。</p>
 <p>$on的方法中的event事件参数：</p>
 <ol>
 <li>event.name 事件名称  </li>
